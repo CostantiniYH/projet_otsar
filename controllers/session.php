@@ -32,7 +32,7 @@ function getUserSession() {
 
 function require_login() {
     if (!isLoggedIn()) {
-        header('Location: ' . BASE_URL . '/login.php?message=Vous devez vous connecter !');
+        header('Location: ' . BASE_URL . 'Compte/login.php?message=Vous devez vous connecter !');
         exit();
     }
 }
@@ -41,7 +41,7 @@ function require_login() {
 function logoutUser() {
     session_destroy();
     setcookie(session_name(), '', time() - 3600, '/');
-    header('Location: ' . BASE_URL . '/login.php?success=Déconnexion réussi !');
+    header('Location: ' . BASE_URL . 'Compte/login.php?success=Déconnexion réussi !');
     exit();
 }
 ?>

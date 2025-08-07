@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__ . '/backend/db_connect.php';
-require_once __DIR__ . '/controllers/session.php';
-require_once __DIR__ . '/components/header.php';
-require_once __DIR__ . '/class/navbar.php';
+require_once __DIR__ . '/../backend/db_connect.php';
+require_once __DIR__ . '/../controllers/session.php';
+require_once __DIR__ . '/../components/header.php';
+require_once __DIR__ . '/../class/navbar.php';
 
 require_login();
 
@@ -29,7 +29,7 @@ $navbar->AddItem('', 'add_image.php', 'center', true, 'bi bi-image" data-bs-togg
 $navbar->AddItem('תנ"ך','0_tanak.php','dropdown');
 $navbar->AddItem('גמרא','1_talmud.php','dropdown');
 $navbar->AddItem('הלכה', '2_halaka.php', 'dropdown');
-$navbar->AddItem('', 'javascript:location.replace("logout.php")', 'right', '', 'bi bi-door-open-fill rounded-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-red" title="Déconnexion');
+$navbar->AddItem('', 'javascript:location.replace(BASE_URL + "logout.php")', 'right', '', 'bi bi-door-open-fill rounded-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-red" title="Déconnexion');
 $navbar->render() ;
 ?>
 
@@ -117,5 +117,5 @@ $navbar->render() ;
 </div>
 
 <?php
-require_once __DIR__ . '/components/footer.php';
+require_once __DIR__ . '/../components/footer.php';
 ?>

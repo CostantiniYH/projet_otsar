@@ -1,13 +1,13 @@
 <?php 
-require_once __DIR__ . '/backend/db_connect.php';
-require_once __DIR__ . '/controllers/session.php';
-require_once __DIR__ . '/components/header.php';
-require_once __DIR__ . '/class/navbar.php';
+require_once __DIR__ . '/../backend/db_connect.php';
+require_once __DIR__ . '/../controllers/session.php';
+require_once __DIR__ . '/../components/header.php';
+require_once __DIR__ . '/../class/navbar.php';
 
 $navbar = new Navbar();
 $navbar->AddItem(' אוצר','index.php', 'left', '', 'bi bi-book-half rounded-5 text-white" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-left" title="אוצר הספרים');
 $navbar->AddItem('','index.php','center', true, 'bi bi-house-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Accueil');
-$navbar->AddItem('Inscription','register.php', 'right');
+$navbar->AddItem('Inscription','Compte/register.php', 'right');
 $navbar->Render();
 ?>
 <div class="bg-gray p-3">
@@ -52,5 +52,5 @@ $navbar->Render();
     </div>
 </div>
 <?php
-require_once __DIR__ . '/components/footer.php';
+require_once __DIR__ . '/../components/footer.php';
 ?>

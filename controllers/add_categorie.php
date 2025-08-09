@@ -6,12 +6,15 @@ require_once __DIR__ . '/../backend/db_connect.php';
         exit();
     }
 
-$nom = $_POST['nom'];
+$nom_c = $_POST['nom_categorie'];
+$nom_s_c = $_POST['nom_s_categorie'];
+$nom_s_s_c = $_POST['nom_s_s_categorie'];
+
 
 $pdo = connect();
 
 
-$categoryExists = findBy2($pdo, 't_categories', 'id', $nom);
+$categoryExists = findBy2($pdo, 't_categories', 'id', $nom_c);
     if ($categoryExists) {
         header('location: ' . BASE_URL . 'add_categorie.php?message=La catégorie sélectionnée existe déjà.');
         exit();

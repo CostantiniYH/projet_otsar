@@ -26,7 +26,7 @@ $navbar->AddItem('','index.php','center', '', 'bi bi-house-fill" data-bs-toggle=
 $navbar->AddItem('', 'Admin/dashboard.php', 'center', true, 'bi bi-kanban" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Tableau de bord');
 $navbar->AddItem('', 'Admin/add_categorie.php', 'center', '', 'bi bi-grid-3x3-gap-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Gestion des catégories');
 $navbar->AddItem('', 'Admin/add_image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
-$navbar->AddItem('', 'Admin/add_livre.php', 'center', '', 'bi bi-book" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
+$navbar->AddItem('', 'Admin/add_livre.php', 'center', '', 'bi bi-book-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
 
 $navbar->AddItem('תנ"ך','0_tanak.php','dropdown');
 $navbar->AddItem('גמרא','1_talmud.php','dropdown');

@@ -13,14 +13,11 @@ $password = $_POST['password'];
 
 $pdo = connect();
 
-$value = findBy2($pdo, 't_users', 'mail', $email);
+$value = findBy($pdo, 't_users',  'mail', $email);
 
-if (empty($value)) {
-    header('Location: ' . BASE_URL . 'Compte/login.php?erreur=Utilisateur non trouvé !');
-    exit();
-}
 
-$user = $value[0]; // car findBy2() retourne un tableau d'utilisateurs
+
+$user = $value[0]; // car findBy() retourne un tableau d'utilisateurs
 
 
 if (User::verifyPassword($password, $user['passwd'])) {

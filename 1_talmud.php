@@ -6,7 +6,7 @@ require_once __DIR__ . '/class/navbar.php';
 require_once __DIR__ . '/class/carousel.php';
 
 if (!isLoggedIn()) {
-    header('Location: login.php');
+    header('Location: ' . BASE_URL . 'Compte/login.php');
     exit();
 } else {
     getUserSession();
@@ -16,17 +16,22 @@ if (!isLoggedIn()) {
 $navbar = new Navbar();
 $navbar->AddItem(' אוצר','index.php', 'left', '', 'bi bi-book-half rounded-5 text-white" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-left" title="אוצר הספרים');
 $navbar->AddItem('','index.php','center', '', 'bi bi-house-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Accueil');
-$navbar->AddItem('תנ"ך','0_tanak.php','center');
 $navbar->AddItem('גמרא','1_talmud.php','center', true);
-$navbar->AddItem('הלכה', '2_halaka.php', 'center');
-$navbar->AddItem('מוסר', '3_mousar.php', 'center');
 if (isLoggedIn()) {
-    $navbar->AddItem('', 'dashboard.php', 'center', '', 'bi bi-kanban" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Tableau de bord');
-    $navbar->AddItem('', 'add_image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
-    $navbar->AddItem('', 'add_categorie.php', 'center', true, 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
+    $navbar->AddItem('','livres.php','center', '', 'bi bi-book" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Livres');
+    $navbar->AddItem('תנ"ך','0_tanak.php','dropdown');
+    $navbar->AddItem('הלכה', '2_halaka.php', 'dropdown');
+    $navbar->AddItem('מוסר', '3_mousar.php', 'dropdown');
+    $navbar->AddItem('', 'Admin/dashboard.php', 'center', '', 'bi bi-kanban" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Tableau de bord');
+    $navbar->AddItem('', 'Admin/add_image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
+    $navbar->AddItem('', 'Admin/add_categorie.php', 'center', true, 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
+    $navbar->AddItem('', 'Admin/add_livre.php', 'center', '', 'bi bi-book-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
     $navbar->AddItem('Déconnexion', 'javascript:location.replace("logout.php")', 'right');
     } else {
-    $navbar->AddItem('','login.php','right', '', 'bi bi-person-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-right" title="Connexion');
+    $navbar->AddItem('תנ"ך','0_tanak.php','center');
+    $navbar->AddItem('הלכה', '2_halaka.php', 'center');
+    $navbar->AddItem('מוסר', '3_mousar.php', 'center');
+    $navbar->AddItem('','Compte/login.php','right', '', 'bi bi-person-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-right" title="Connexion');
     $navbar->AddItem('Inscription','register.php', 'right');
     }
 $navbar->render() ;

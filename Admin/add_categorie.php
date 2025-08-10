@@ -3,7 +3,6 @@ require_once __DIR__ . '/../backend/db_connect.php';
 require_once __DIR__ . '/../controllers/session.php';
 require_once __DIR__ . '/../components/header.php';
 require_once __DIR__ . '/../class/navbar.php';
-require_once __DIR__ . '/../backend/db_connect.php';
 require_login();
 
 $pdo = connect();
@@ -11,6 +10,7 @@ $pdo = connect();
 $categories = getAll($pdo, 't_categories');
 $s_categories = getAll($pdo, 't_s_categories');
 $s_s_categories = getAll($pdo, 't_s_s_categories');
+$s_s_s_categories = getAll($pdo, 't_s_s_s_categories');
 
 
 $navbar = new Navbar();
@@ -19,12 +19,12 @@ $navbar->AddItem('','index.php','center', '', 'bi bi-house-fill" data-bs-toggle=
 $navbar->AddItem('', 'Admin/dashboard.php', 'center', '', 'bi bi-kanban" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Tableau de bord');
 $navbar->AddItem('', 'Admin/add_categorie.php', 'center', true, 'bi bi-grid-3x3-gap-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Gestion des catégories');
 $navbar->AddItem('', 'Admin/add_image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
-$navbar->AddItem('', 'Admin/add_livre.php', 'center', '', 'bi bi-book" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
+$navbar->AddItem('', 'Admin/add_livre.php', 'center', '', 'bi bi-book-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
 
 $navbar->AddItem('תנ"ך','0_tanak.php','dropdown');
 $navbar->AddItem('גמרא','1_talmud.php','dropdown');
 $navbar->AddItem('הלכה', '2_halaka.php', 'dropdown');
-$navbar->AddItem('', 'javascript:location.replace("logout.php")', 'right', '', 'bi bi-door-open-fill rounded-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-red" title="Déconnexion');
+$navbar->AddItem('', 'javascript:location.replace(BASE_URL + "logout.php")', 'right', '', 'bi bi-door-open-fill rounded-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-red" title="Déconnexion');
 $navbar->render() ;
 ?>
 <style>
@@ -75,8 +75,8 @@ $navbar->render() ;
             <div class="row row-cols-1 row-cols-md-3">
                 <?php foreach ($categories as $categorie) { ?> 
                         <div class="col-md-2 m-2 pt-3 rounded-4 shadow bg-light text-center">
-                            <p class=""><a href="<?= BASE_URL ?>sefarim.php?id=<?= $categorie['id']; ?>"
-                            style="display: contents;"><?= $categorie['nom']; ?></p>
+                            <p class=""><a href="<?= BASE_URL ?>livres.php?id=<?= $categorie['id']; ?>"
+                            style="display: contents;"><?= $categorie['nom']; ?></a></p>
                         </div>            
                 <?php } ?>
             </div>
@@ -99,8 +99,8 @@ $navbar->render() ;
             <div class="row row-cols-1 row-cols-md-3">
                 <?php foreach ($s_categories as $s_categorie) { ?> 
                         <div class="col-md-2 m-2 pt-3 rounded-4 shadow bg-light text-center">
-                            <p class=""><a href="<?= BASE_URL ?>sefarim.php?id=<?= $s_categorie['id']; ?>"
-                            style="display: contents;"><?= $s_categorie['nom']; ?></p>
+                            <p class=""><a href="<?= BASE_URL ?>livres.php?id=<?= $s_categorie['id']; ?>"
+                            style="display: contents;"><?= $s_categorie['nom']; ?></a></p>
                         </div>            
                 <?php } ?>
             </div>
@@ -123,8 +123,32 @@ $navbar->render() ;
             <div class="row row-cols-1 row-cols-md-3">
                 <?php foreach ($s_s_categories as $s_s_categorie) { ?> 
                         <div class="col-md-2 m-2 pt-3 rounded-4 shadow bg-light text-center">
-                            <p class=""><a href="<?= BASE_URL ?>sefarim.php?id=<?= $s_s_categorie['id']; ?>"
-                            style="display: contents;"><?= $s_s_categorie['nom']; ?></p>
+                            <p class=""><a href="<?= BASE_URL ?>livres.php?id=<?= $s_s_categorie['id']; ?>"
+                            style="display: contents;"><?= $s_s_categorie['nom']; ?></a></p>
+                        </div>            
+                <?php } ?>
+            </div>
+        </div>
+        <form action="<?= BASE_URL ?>controllers/add_categorie.php" method="post" class="col-md-5 
+        shadow p-4 rounded-4" enctype="multipart/form-data">
+            <h4 class="text-center">Sous-sous-sous-catégorie</h4>
+            <div class="form-group">
+                <label for="nom_s_s_s_categorie" class="mb-2">Nom</label>
+                <input type="text" class="form-control" id="nom_s_s_s_categorie" name="nom_s_s_s_categorie"
+                placeholder="Entrer le nom de la ctégorie">
+            </div><br> 
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" id="">Ajouter</button>
+            </div>
+        </form>
+        <div class="col shadow rounded bg-custom">
+            <h4 class="text-center mt-4 p-3 rounded-4 shadow border border-bottom-0 border-2 
+            border-warning">Sous-sous-sous-catégories existantes</h4>
+            <div class="row row-cols-1 row-cols-md-3">
+                <?php foreach ($s_s_s_categories as $s_s_s_categorie) { ?> 
+                        <div class="col-md-2 m-2 pt-3 rounded-4 shadow bg-light text-center">
+                            <p class=""><a href="<?= BASE_URL ?>livres.php?id=<?= $s_s_s_categorie['id']; ?>"
+                            style="display: contents;"><?= $s_s_s_categorie['nom']; ?></a></p>
                         </div>            
                 <?php } ?>
             </div>

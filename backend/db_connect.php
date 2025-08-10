@@ -27,13 +27,23 @@ function getAll($pdo, $table) {
     }
 }
 
-function findBy2($pdo, $table, $champ, $value) {
+function findBy($pdo, $table, $field, $value) {
     try {
-        $value = trim($value);
-        $sql = "SELECT * FROM $table WHERE $champ = ?"; // Sélectionner toutes les colonnes
-
+        $sql = "SELECT * FROM $table WHERE $field = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$value]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupérer toutes les lignes correspondantes
+    } catch (PDOException $e) {
+        echo "Erreur : " . $e->getMessage();
+    }
+}
+function findBy2($pdo, $table, $champ, $id) {
+    try {
+        $sql = "SELECT $table.*, c.nom AS nom_categorie FROM $table
+        INNER JOIN t_categories c ON $table.id_categorie = c.id WHERE $table.$champ = ?"; // Sélectionner toutes les colonnes
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$id]);
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupérer toutes les lignes correspondantes
         return $result;

@@ -10,19 +10,22 @@ $navbar->AddItem(' אוצר','index.php', 'left', '', 'bi bi-book-half rounded-5
 $navbar->AddItem('','index.php','center', true, 'bi bi-house-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Accueil');
 
 if (isLoggedIn()) {
+    $navbar->AddItem('Livres','livres.php','dropdown', '', 'bi bi-book" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Livres');
     $navbar->AddItem('תנ"ך','0_tanak.php','dropdown');
     $navbar->AddItem('גמרא','1_talmud.php','dropdown');
     $navbar->AddItem('הלכה', '2_halaka.php', 'dropdown');
     $navbar->AddItem('מוסר', '3_mousar.php', 'dropdown');    
-    $navbar->AddItem('', 'dashboard.php', 'center', '', 'bi bi-kanban" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Tableau de bord');
-    $navbar->AddItem('', 'add_image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
-    $navbar->AddItem('', 'add_categorie.php', 'center', '', 'bi bi-grid-3x3-gap-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Gestion des catégories');
+    $navbar->AddItem('', 'Admin/dashboard.php', 'center', '', 'bi bi-kanban" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Tableau de bord');
+    $navbar->AddItem('', 'Admin/add_image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
+    $navbar->AddItem('', 'Admin/add_categorie.php', 'center', '', 'bi bi-grid-3x3-gap-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Gestion des catégories');
+    $navbar->AddItem('', 'Admin/add_livre.php', 'center', '', 'bi bi-book-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
     $navbar->AddItem('Déconnexion', 'javascript:location.replace("logout.php")', 'right');
 } else {
     $navbar->AddItem('תורה', '0-1_torah.php', 'dropdown');
     $navbar->AddItem('נך', '0-2_nak.php', 'dropdown');
     $navbar->AddItem('תלמוד בבלי', '1-1_babli.php', 'dropdown');
     $navbar->AddItem('תלמוד ירושלמי', '1-2_yerouchalmi.php', 'dropdown');
+    $navbar->AddItem('','livres.php','center', '', 'bi bi-book" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Livres');
     $navbar->AddItem('תנ"ך','0_tanak.php','center');
     $navbar->AddItem('גמרא','1_talmud.php','center');
     $navbar->AddItem('הלכה', '2_halaka.php', 'center');

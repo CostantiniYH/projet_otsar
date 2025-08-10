@@ -34,7 +34,7 @@ $navbar->render() ;
     
     
     <h1 class="text-center rounded-3 bg-white shadow">Inscription</h1>
-    <a href="index.php" class="btn btn-primary bi bi-arrow-left">Home</a>
+    <a href="<?= BASE_URL ?>index.php" class="btn btn-primary bi bi-arrow-left">Home</a>
     <div class="row p-5">
         <form action="<?= BASE_URL ?>controllers/register.php" method="post" class="col-md-6 offset-3 border-3 border-start border-end border-primary shadow p-3 rounded-4 bg-white">
             <div class="form-group mb-3">

@@ -6,7 +6,6 @@ require_once __DIR__ . '/class/navbar.php';
 require_once __DIR__ . '/class/carousel.php';
 
 $pdo = connect();
-$livres = getAll ($pdo, 't_livres');
 $id = $_GET['id'] ?? null;
 
 $navbar = new Navbar();
@@ -36,65 +35,67 @@ if (isLoggedIn()) {
     $navbar->AddItem('מוסר', '3_mousar.php', 'center');
     $navbar->AddItem('','Compte/login.php','right', '', 'bi bi-person-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-right" title="Connexion');
     $navbar->AddItem('Inscription','Compte/register.php', 'right');
-    }
+}
 
 $navbar->render() ;
 ?>
 
 <div class="container mb-5 mt-5">
-<?php if (isset($_GET['erreur'])): ?>
+    <?php if (isset($_GET['erreur'])): ?>
         <div class="alert alert-danger alert-dismissible fade show" data-bs-dismiss="3000" role="alert">
             <?= htmlspecialchars($_GET['erreur']) ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-    <?php endif; ?>
-    <?php if (isset($_GET['message'])): ?>
-        <div class="alert alert-warning alert-dismissible fade show" data-bs-dismiss="3000" role="alert">
-            <?= htmlspecialchars($_GET['message']) ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif; ?>
-    <?php if (isset($_GET['success'])): ?>
-        <div class="alert alert-success alert-dismissible fade show" data-bs-dismiss="3000" role="alert">
-            <?= htmlspecialchars($_GET['success']) ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif; ?>
-<?php  $titre = findBy2 ($pdo, 't_livres', 'id_categorie', $id); ?>
-    <h1 class="mb-5 shadow rounded-4 border-start border-end border-2 border-success"> 
-        <?php
+        <?php endif; ?>
+        <?php if (isset($_GET['message'])): ?>
+            <div class="alert alert-warning alert-dismissible fade show" data-bs-dismiss="3000" role="alert">
+                <?= htmlspecialchars($_GET['message']) ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php endif; ?>
+            <?php if (isset($_GET['success'])): ?>
+                <div class="alert alert-success alert-dismissible fade show" data-bs-dismiss="3000" role="alert">
+                    <?= htmlspecialchars($_GET['success']) ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <?php endif; ?>
+                <h1 class="mb-5 shadow rounded-4 border-start border-end border-2 border-success"> 
+                    <?php
             if (!empty($_GET['id'])) {
-                    echo 'Produits ' . htmlspecialchars($titre['nom']);
-                   // echo ' (ID: ' . htmlspecialchars($titre['id']) . ')';
+                $livreById = getLivreByCategorieId($pdo, 't_livres');
+                echo 'Produits ' . $livreById['nom_categorie'] . '';
+                // echo ' (ID: ' . htmlspecialchars($titre['id']) . ')';
             } else {
                 echo 'Tous les livres';
             }
-            ?></h1>
-     
-    <div class="row gy-5 text-center">
-        <?php 
+            ?>
+        </h1>
+        
+        <div class="row gy-5 text-center">
+            <?php 
             if (!empty($_GET['id'])) {
                 $id = $_GET['id'];
-                $livreById = findBy2 ($pdo, 't_livres', 'id_categorie', $id); 
-
+                $livreById = getLivreByCategorieId($pdo, 't_livres'); 
+                
                 foreach ($livreById as $row => $value) {
-                ?>
+                    ?>
                     <div class="col-md-4" data-aos="fade-up" data-aos-duration="2000">
                         <?php require __DIR__ . '/components/card_livre.php'; ?> </br>
                     </div>
-                <?php 
+                    <?php 
                 }
             } else {
-
+                $livres = getLivre ($pdo);                
                 foreach ($livres as $row => $value) {
-                ?>
-                    <div class="col-md-4" data-aos="fade-up" data-aos-duration="2000" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $value['nom'] ?>">
-                        <?php require __DIR__ . '/components/card_livre.php'; ?> </br>
-                    </div>
+                    ?>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-duration="2000" data-bs-toggle="tooltip" 
+                    data-bs-placement="top" title="<?= $value['titre'] ?>">
+                    <?php require __DIR__ . '/components/card_livre.php'; ?> </br>
+                </div>
                 <?php 
                 }
             }
-        ?>
+            ?>
     </div>   
 </div>
 <?php

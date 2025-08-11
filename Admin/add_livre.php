@@ -58,14 +58,19 @@ $navbar->render() ;
     <div class="row mt-4 mb-4 gap-4">
         <h3 class="text-center mb-4 p-3 rounded-4 shadow border border-bottom-0 border-3 border-warning"
         >Ajouter un livre</h3>
-        <form action="<?= BASE_URL ?>controllers/add_categorie.php" method="post" class="col-md-5 shadow p-4 
+        <form action="<?= BASE_URL ?>controllers/add_livre.php" method="post" class="col-md-5 shadow p-4 
         rounded-4" enctype="multipart/form-data">
             <h4 class="text-center">Ajouter ici</h4>
             <div class="form-group">
-                <label for="nom" class="mb-2">Nom</label>
-                <input type="text" class="form-control" id="nom" name="nom"
+                <label for="titre" class="mb-2">Titre</label>
+                <input type="text" class="form-control" id="titre" name="titre"
                 placeholder="Entrer le nom de la ctégorie" required>
             </div><br> 
+            <div class="form-group">
+                <label for="auteur" class="mb-2">Auteur</label>
+                <input type="text" class="form-control" id="auteur" name="auteur"
+                placeholder="Entrer le nom de l'auteur" required>
+            </div>
             <div class="form-group">
                 <label for="image" class="mb-2">Image</label>
                 <input type="file" class="form-control" id="image" name="image" required>
@@ -75,40 +80,40 @@ $navbar->render() ;
                 <select class="form-select" id="categorie" name="categorie" required>
                     <option value="0">Choisir une catégorie</option>
                         <?php  foreach ($categories as $categorie): ?>
-                            <option value="<?= $categorie['id'] ?>" required><?= $categorie['nom'] ?></option>
+                            <option value="<?= $categorie['id'] ?>"><?= $categorie['nom'] ?></option>
                         <?php endforeach; ?>
                 </select>
             </div><br>
              <div class="form-group">
-                <label for="categorie" class="mb-2">Sous-catégorie</label>
-                <select class="form-select" id="categorie" name="categorie" required>
+                <label for="s_categorie" class="mb-2">Sous-catégorie</label>
+                <select class="form-select" id="s_categorie" name="s_categorie">
                     <option value="0">Choisir une sous-catégorie</option>
                         <?php  foreach ($s_categories as $s_categorie): ?>
-                            <option value="<?= $s_categorie['id'] ?>" required><?= $s_categorie['nom'] ?></option>
+                            <option value="<?= $s_categorie['id'] ?>"><?= $s_categorie['nom'] ?></option>
                         <?php endforeach; ?>
                 </select>
             </div><br>
              <div class="form-group">
-                <label for="categorie" class="mb-2">Sous-sous-catégorie</label>
-                <select class="form-select" id="categorie" name="categorie" required>
+                <label for="s_s_categorie" class="mb-2">Sous-sous-catégorie</label>
+                <select class="form-select" id="s_s_categorie" name="s_s_categorie">
                     <option value="0">Choisir une sous-sous-catégorie</option>
                         <?php  foreach ($s_s_categories as $s_s_categorie): ?>
-                            <option value="<?= $s_s_categorie['id'] ?>" required><?= $s_s_categorie['nom'] ?></option>
+                            <option value="<?= $s_s_categorie['id'] ?>"><?= $s_s_categorie['nom'] ?></option>
                         <?php endforeach; ?>
                 </select>
             </div><br>
             <div class="form-group">
-                <label for="categorie" class="mb-2">Sous-sous-sous-catégorie</label>
-                <select class="form-select" id="categorie" name="categorie" required>
+                <label for="s_s_s_categorie" class="mb-2">Sous-sous-sous-catégorie</label>
+                <select class="form-select" id="s_s_s_categorie" name="s_s_s_categorie">
                     <option value="0">Choisir une sous-sous-sous-catégorie</option>
                         <?php  foreach ($s_s_s_categories as $s_s_s_categorie): ?>
-                            <option value="<?= $s_s_s_categorie['id'] ?>" required><?= $s_s_s_categorie['nom'] ?></option>
+                            <option value="<?= $s_s_s_categorie['id'] ?>"><?= $s_s_s_categorie['nom'] ?></option>
                         <?php endforeach; ?>
                 </select>
             </div><br>
             <div class="form-group">
                 <label for="description" class="mb-2">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
             </div><br>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary" id="">Ajouter</button>
@@ -120,7 +125,7 @@ $navbar->render() ;
                 <?php foreach ($livres as $livre) { ?> 
                         <div class="col-md-2 m-2 pt-3 rounded-4 shadow bg-light text-center">
                             <p class=""><a href="<?= BASE_URL ?>livres.php?id=<?= $livre['id']; ?>"
-                            style="display: contents;"><?= $livre['nom']; ?></p>
+                            style="display: contents;"><?= $livre['titre']; ?></p>
                         </div>            
                 <?php } ?>
             </div>

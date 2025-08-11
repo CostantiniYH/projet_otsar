@@ -3,8 +3,8 @@ define('BASE_URL', '/projet_otsar/');
 function connect() {
     try {
         $dsn = "mysql:host=localhost;dbname=otsar";
-        $user = "YHC";
-        $password = "Yaacov2790.";
+        $user = "root";
+        $password = "";
 
         $pdo = new PDO($dsn, $user, $password, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -90,5 +90,40 @@ function getUser($pdo) {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);        
     } catch (PDOException $e) {
         die("Erreur de récupération des données d'utilisateur : " . $e->getMessage());
+    }
+}
+
+function getLivre($pdo) {
+    try {
+        $sql = "SELECT l.*, c.nom AS nom_categorie, s_c.nom AS nom_s_categorie, s_s_c.nom AS 
+        nom_s_s_categorie, s_s_s_c.nom AS nom_s_s_s_categorie
+                FROM t_livres l
+                LEFT JOIN t_categories c ON l.id_categorie = c.id
+                LEFT JOIN t_s_categories s_c ON l.id_s_categorie = s_c.id
+                LEFT JOIN t_s_s_categories s_s_c ON l.id_s_s_categorie = s_s_c.id
+                LEFT JOIN t_s_s_s_categories s_s_s_c ON l.id_s_s_s_categorie = s_s_s_c.id";
+        $stmt = $pdo->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Erreur de récupération des livres : " . $e->getMessage());
+    }
+}
+
+function getLivreByCategorieId($pdo, $id) {
+    try {
+        $sql = "SELECT l.*, c.nom AS nom_categorie, s_c.nom AS nom_s_categorie, s_s_c.nom AS 
+        nom_s_s_categorie, s_s_s_c.nom AS nom_s_s_s_categorie
+                FROM t_livres l
+                LEFT JOIN t_categories c ON l.id_categorie = c.id
+                LEFT JOIN t_s_categories s_c ON l.id_s_categorie = s_c.id
+                LEFT JOIN t_s_s_categories s_s_c ON l.id_s_s_categorie = s_s_c.id
+                LEFT JOIN t_s_s_s_categories s_s_s_c ON l.id_s_s_s_categorie = s_s_s_c.id
+                WHERE l.id_categorie = ? OR l.id_s_categorie = ? OR l.id_s_s_categorie = ? OR 
+                l.id_s_s_s_categorie = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Erreur de récupération des livres par catégorie : " . $e->getMessage());
     }
 }

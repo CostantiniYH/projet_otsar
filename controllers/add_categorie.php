@@ -6,9 +6,9 @@ require_once __DIR__ . '/../backend/db_connect.php';
         exit();
     }
 
-$nom_c = $_POST['nom_categorie'];
-$nom_s_c = $_POST['nom_s_categorie'];
-$nom_s_s_c = $_POST['nom_s_s_categorie'];
+$nom_c = $_POST['nom_categorie'] ?? '';
+$nom_s_c = $_POST['nom_s_categorie'] ?? '';
+$nom_s_s_c = $_POST['nom_s_s_categorie'] ?? '';
 $nom_s_s_s_c = $_POST['nom_s_s_s_categorie'] ?? null;
 
 
@@ -42,7 +42,8 @@ $data_s_s_s_c = [
 var_dump($data) ; 
 
 if (insert($pdo,'t_categories',$data_c) || insert($pdo,'t_s_categories',
-$data_s_c) || insert($pdo,'t_s_s_categories',$data_s_s_c) || insert($pdo, 't_s_s_s_categories', $data_s_s_s_c))  { 
+$data_s_c) || insert($pdo,'t_s_s_categories',$data_s_s_c) || insert($pdo,
+ 't_s_s_s_categories', $data_s_s_s_c))  { 
     header('location: ' . BASE_URL . 'Admin/add_categorie.php?success=Catégorie ajoutée avec succès !');
     exit();
     } else {

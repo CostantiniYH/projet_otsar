@@ -3,8 +3,8 @@ define('BASE_URL', '/projet_otsar/');
 function connect() {
     try {
         $dsn = "mysql:host=localhost;dbname=otsar";
-        $user = "root";
-        $password = "";
+        $user = "YHC";
+        $password = "Yaacov2790.";
 
         $pdo = new PDO($dsn, $user, $password, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

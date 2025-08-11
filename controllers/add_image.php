@@ -4,7 +4,7 @@ require_once __DIR__ . '/../class/image.php';
 require_once __DIR__ . '/../class/upload.php';
 
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-        header('location: ' . BASE_URL . 'add_image.php?erreur=Accès interdit !');
+        header('location: ' . BASE_URL . 'Admin/add_image.php?erreur=Accès interdit !');
         exit();
     }
 
@@ -38,15 +38,15 @@ var_dump(
 
 $pdo = connect();
 
-$existingImage = findBy2($pdo, 't_images',  'chemin', $destination);
+$existingImage = findBy($pdo, 't_images',  'chemin', $destination);
     if ($existingImage) {
-        header('location: ' . BASE_URL . 'add_image.php?message=L\'image a déjà été ajoutée !');
+        header('location: ' . BASE_URL . 'Admin/add_image.php?message=L\'image a déjà été ajoutée !');
         exit();
     }
 
-$categoryExists = findBy2($pdo, 't_categories', 'id', $categories);
+$categoryExists = findBy($pdo, 't_categories', 'id', $categories);
     if (!$categoryExists) {
-        header('location: ' . BASE_URL . 'add_image.php?message=La catégorie sélectionnée n\'existe pas.');
+        header('location: ' . BASE_URL . 'Admin/add_image.php?message=La catégorie sélectionnée n\'existe pas.');
         exit();
     }
 
@@ -59,10 +59,10 @@ $data = [
 var_dump($data) ; 
 
 if (insert($pdo,'t_images',$data)) { 
-    header('location: ' . BASE_URL . 'add_image.php?success=Image ajoutée avec succès !');
+    header('location: ' . BASE_URL . 'Admin/add_image.php?success=Image ajoutée avec succès !');
     exit();
     } else {
-        header('location: ' . BASE_URL . 'add_image.php?erreur=Erreur lors de l\'ajout de l\'image !');    
+        header('location: ' . BASE_URL . 'Admin/add_image.php?erreur=Erreur lors de l\'ajout de l\'image !');    
         exit();;
     }
 ?>

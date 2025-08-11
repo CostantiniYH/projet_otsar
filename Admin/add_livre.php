@@ -4,6 +4,7 @@ require_once __DIR__ . '/../controllers/session.php';
 require_once __DIR__ . '/../components/header.php';
 require_once __DIR__ . '/../class/navbar.php';
 require_once __DIR__ . '/../backend/db_connect.php';
+
 require_login();
 
 $pdo = connect();
@@ -55,14 +56,20 @@ $navbar->render() ;
     <?php endif; ?>
 
     <div class="row mt-4 mb-4 gap-4">
-        <h3 class="text-center mb-4 p-3 rounded-4 shadow border border-bottom-0 border-3 border-warning">Ajouter un livre</h3>
-        <form action="<?= BASE_URL ?>controllers/add_categorie.php" method="post" class="col-md-5 shadow p-4 rounded-4" enctype="multipart/form-data">
+        <h3 class="text-center mb-4 p-3 rounded-4 shadow border border-bottom-0 border-3 border-warning"
+        >Ajouter un livre</h3>
+        <form action="<?= BASE_URL ?>controllers/add_categorie.php" method="post" class="col-md-5 shadow p-4 
+        rounded-4" enctype="multipart/form-data">
             <h4 class="text-center">Ajouter ici</h4>
             <div class="form-group">
                 <label for="nom" class="mb-2">Nom</label>
                 <input type="text" class="form-control" id="nom" name="nom"
                 placeholder="Entrer le nom de la ctégorie" required>
             </div><br> 
+            <div class="form-group">
+                <label for="image" class="mb-2">Image</label>
+                <input type="file" class="form-control" id="image" name="image" required>
+            </div><br>
              <div class="form-group">
                 <label for="categorie" class="mb-2">Catégorie</label>
                 <select class="form-select" id="categorie" name="categorie" required>
@@ -89,6 +96,19 @@ $navbar->render() ;
                             <option value="<?= $s_s_categorie['id'] ?>" required><?= $s_s_categorie['nom'] ?></option>
                         <?php endforeach; ?>
                 </select>
+            </div><br>
+            <div class="form-group">
+                <label for="categorie" class="mb-2">Sous-sous-sous-catégorie</label>
+                <select class="form-select" id="categorie" name="categorie" required>
+                    <option value="0">Choisir une sous-sous-sous-catégorie</option>
+                        <?php  foreach ($s_s_s_categories as $s_s_s_categorie): ?>
+                            <option value="<?= $s_s_s_categorie['id'] ?>" required><?= $s_s_s_categorie['nom'] ?></option>
+                        <?php endforeach; ?>
+                </select>
+            </div><br>
+            <div class="form-group">
+                <label for="description" class="mb-2">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
             </div><br>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary" id="">Ajouter</button>

@@ -40,9 +40,8 @@ class User {
             return $this->setError("L'adresse email n'est pas valide");
         }
         $this->mail = htmlspecialchars($mail);
-        return $this->mail = $mail;
-        
     }
+
     private function validateEmail($mail) {
         if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
             return true;
@@ -56,12 +55,13 @@ class User {
             return $this->setError("Le mot de passe doit contenir au moins 8 caracteres");
         }
         $passwd = $this->hashPassword($passwd);
-        $this->passwd = $passwd;
-        return $this->passwd;        
+        $this->passwd = $passwd;     
     }
+
     public function hashPassword($passwd) {
         return password_hash($passwd, PASSWORD_ARGON2ID);
     }
+    
     public static function verifyPassword($passwd, $hash) {
         if (password_verify($passwd, $hash)) {
             return true;

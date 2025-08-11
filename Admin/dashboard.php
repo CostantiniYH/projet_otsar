@@ -86,7 +86,7 @@ $navbar->render() ;
                         <td><?= $u['nom'] ?></td>
                         <td><?= $u['prenom'] ?></td>
                         <td><?= $u['mail'] ?></td>
-                        <?= $u['role'] ?></td>
+                        <td><?= $u['role'] ?></td>
                         <td><?= $u['created_at'] ?></td>
                     </tr>
                 <?php endforeach; ?>

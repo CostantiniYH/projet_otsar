@@ -60,7 +60,7 @@ $navbar->render() ;
         </div>
     <?php endif; ?>
     
-    <h1 class="mb-5 shadow rounded-4 border-start border-end border-2 border-success"> 
+    <h1 class="mb-5 shadow rounded-4 border-start border-end border-2"> 
         <?php
             if (!empty($_GET['id'])) {
                 $categorieLivre = findBy($pdo, 't_categories', 'id', $id);

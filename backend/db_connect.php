@@ -70,6 +70,42 @@ function insert($pdo, $table, $data) {
     }
 }
 
+function update($pdo, $table, $data, $id) {
+    try {
+        $set = '';
+        foreach ($data as $key => $value) {
+            $set .= "$key = ?, ";
+        }
+        $set = rtrim($set, ', ');
+        $sql = "UPDATE $table SET $set WHERE id = ?";
+        $stmt = $pdo->prepare($sql);
+        
+        if ($stmt->execute(array_merge(array_values($data), [$id]))) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        echo "Erreur : " . $e->getMessage();
+        return false;
+    }
+}
+
+function delete($pdo, $table, $id) {
+    try {
+        $sql = "DELETE FROM $table WHERE id = ?";
+        $stmt = $pdo->prepare($sql);
+        if ($stmt->execute([$id])) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        echo "Erreur : " . $e->getMessage();
+        return false;
+    }
+}
+
 
 function insertUser($pdo, $nom, $prenom, $email, $password) {
     try {

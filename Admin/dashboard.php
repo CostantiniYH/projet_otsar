@@ -63,7 +63,7 @@ $navbar->render() ;
                     <!--<a href="admin-pannel.php">Panel admin</a>-->
             <?php } else { ?>
                     <p class="col-md-12 shadow p-3 rounded border-start border-black border-2 border-end">
-                        Bienvenue, <?= $_SESSION['user']['nom'] ?> !</p>
+                        Bienvenue, <?= $_SESSION['user']['prenom']; $_SESSION['user']['nom'] ?> !</p>
                 
         <?php }; ?>
     

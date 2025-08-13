@@ -5,8 +5,8 @@
     <area shape="rect" coords="0,0,300,200" href="<?= BASE_URL ?>livre_one.php?id=<?= $value['id']; ?>">
   </map>
   <div class="card-body">
-      <h5 class="card-title"><?= $value['titre']; ?></h5>
-      <p class="card-text"><?= $value['nom_categorie']; ?> </p>
+      <h4 class="card-title"><?= $value['titre']; ?></h5>
+      <h5 class=""><?= $value['nom_categorie']; ?> </h5>
       <p class="card-text"><?= $value['nom_s_categorie']; ?></p>
         <p class="card-text"><?= $value['nom_s_s_categorie']; ?></p>
         <p class="card-text"><?= $value['nom_s_s_s_categorie']; ?></p>

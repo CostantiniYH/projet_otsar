@@ -121,7 +121,7 @@ function getLivreByCategorieId($pdo, $id) {
                 WHERE l.id_categorie = ? OR l.id_s_categorie = ? OR l.id_s_s_categorie = ? OR 
                 l.id_s_s_s_categorie = ?";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$id]);
+        $stmt->execute([$id, $id, $id, $id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         die("Erreur de récupération des livres par catégorie : " . $e->getMessage());

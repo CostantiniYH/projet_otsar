@@ -10,7 +10,7 @@ $navbar->AddItem(' אוצר','index.php', 'left', '', 'bi bi-book-half rounded-5
 $navbar->AddItem('','index.php','center', true, 'bi bi-house-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Accueil');
 
 if (isLoggedIn()) {
-    $navbar->AddItem('Livres','livres.php','dropdown', '', 'bi bi-book" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Livres');
+    $navbar->AddItem('Livres','livres.php','dropdown', '', 'bi bi-book" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Liste des livres');
     $navbar->AddItem('תנ"ך','0_tanak.php','dropdown');
     $navbar->AddItem('גמרא','1_talmud.php','dropdown');
     $navbar->AddItem('הלכה', '2_halaka.php', 'dropdown');
@@ -25,7 +25,7 @@ if (isLoggedIn()) {
     $navbar->AddItem('נך', '0-2_nak.php', 'dropdown');
     $navbar->AddItem('תלמוד בבלי', '1-1_babli.php', 'dropdown');
     $navbar->AddItem('תלמוד ירושלמי', '1-2_yerouchalmi.php', 'dropdown');
-    $navbar->AddItem('','livres.php','center', '', 'bi bi-book" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Livres');
+    $navbar->AddItem('','livres.php','center', '', 'bi bi-book" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Liste des livres');
     $navbar->AddItem('תנ"ך','0_tanak.php','center');
     $navbar->AddItem('גמרא','1_talmud.php','center');
     $navbar->AddItem('הלכה', '2_halaka.php', 'center');

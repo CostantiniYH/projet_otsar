@@ -6,7 +6,7 @@ require_once __DIR__ . '/class/navbar.php';
 require_once __DIR__ . '/class/carousel.php';
 
 $pdo = connect();
-$id = $_GET['id'] ?? null;
+//$id = $_GET['id'] ?? null;
 
 $navbar = new Navbar();
 $navbar->AddItem(' אוצר','index.php', 'left', '', 'bi bi-book-half rounded-5 text-white" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-left" title="אוצר הספרים');
@@ -36,7 +36,6 @@ if (isLoggedIn()) {
     $navbar->AddItem('','Compte/login.php','right', '', 'bi bi-person-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-right" title="Connexion');
     $navbar->AddItem('Inscription','Compte/register.php', 'right');
 }
-
 $navbar->render() ;
 ?>
 
@@ -60,18 +59,9 @@ $navbar->render() ;
         </div>
     <?php endif; ?>
     
-    <h1 class="mb-5 shadow rounded-4 border-start border-end border-2 border-success"> 
-        <?php
-            if (!empty($_GET['id'])) {
-                $categorieLivre = findBy($pdo, 't_categories', 'id', $id);
-                echo 'Livres ' . $categorieLivre[0]['nom'] . '';
-            } else {
-                echo 'Tous les livres';
-            }
-        ?>
-    </h1>
-
-    <div class="col-md-12">
+    <div class="row">
+        <h3 class="text-center mb-4 p-3 rounded-4 shadow border border-bottom-0 border-3 border-warning">Catégories</h3>
+        <div class="col-md-12">
             <p class="text-center">Sélectionnez une catégorie pour voir les livres associés.</p>
             <form action="<?= BASE_URL ?>livres.php" method="get" class="d-flex justify-content-center mb-4">
                 <select name="id" id="id" class="form-select w-50">
@@ -86,32 +76,7 @@ $navbar->render() ;
             </form>
         </div>
 
-        
-    <div class="row gy-5 text-center">
-        <?php 
-        if (!empty($_GET['id'])) {
-            $livreById = getLivreByCategorieId($pdo, $id); 
-            
-            foreach ($livreById as $row => $value) {
-                ?>
-                <div class="col-md-4" data-aos="fade-up" data-aos-duration="2000">
-                    <?php require __DIR__ . '/components/card_livre.php'; ?> </br>
-                </div>
-                <?php 
-            }
-        } else {
-            $livres = getLivre ($pdo);                
-            foreach ($livres as $row => $value) {
-                ?>
-                <div class="col-md-4" data-aos="fade-up" data-aos-duration="2000" data-bs-toggle="tooltip" 
-                data-bs-placement="top" title="<?= $value['titre'] ?>">
-                <?php require __DIR__ . '/components/card_livre.php'; ?> </br>
-            </div>
-            <?php 
-            }
-        }
-        ?>
-    </div>   
+    </div>
 </div>
 <?php
 require_once __DIR__ . '/components/footer.php';

@@ -9,11 +9,6 @@ require_login();
 
 $pdo = connect();
 
-$categories = getAll($pdo, 't_categories');
-$s_categories = getAll($pdo, 't_s_categories');
-$s_s_categories = getAll($pdo, 't_s_s_categories');
-$livres = getAll($pdo, 't_livres');
-
 $navbar = new Navbar();
 $navbar->AddItem(' אוצר','index.php', 'left', '', 'bi bi-book-half rounded-5 text-white" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-left" title="אוצר הספרים');
 $navbar->AddItem('','index.php','center', '', 'bi bi-house-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Accueil');
@@ -53,13 +48,13 @@ $navbar->render() ;
             <?= htmlspecialchars($_GET['success']) ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-    <?php endif; ?>
-
-    <div class="row mt-4 mb-4 gap-4">
-        <h3 class="text-center mb-4 p-3 rounded-4 shadow border border-bottom-0 border-3 border-warning"
-        >Ajouter un livre</h3>
-        <form action="<?= BASE_URL ?>controllers/add_livre.php" method="post" class="col-md-5 shadow p-4 
-        rounded-4" enctype="multipart/form-data">
+        <?php endif; ?>
+        
+        <div class="row mt-4 mb-4 gap-4">
+            <h3 class="text-center mb-4 p-3 rounded-4 shadow border border-bottom-0 border-3 border-warning"
+            >Ajouter un livre</h3>
+            <form action="<?= BASE_URL ?>controllers/add_livre.php" method="post" class="col-md-5 shadow p-4 
+            rounded-4" enctype="multipart/form-data">
             <h4 class="text-center">Ajouter ici</h4>
             <div class="form-group">
                 <label for="titre" class="mb-2">Titre</label>
@@ -75,59 +70,69 @@ $navbar->render() ;
                 <label for="image" class="mb-2">Image</label>
                 <input type="file" class="form-control" id="image" name="image" required>
             </div><br>
-             <div class="form-group">
+
+            <?php $categories = getAll($pdo, 't_categories');?>
+            <div class="form-group">
                 <label for="categorie" class="mb-2">Catégorie</label>
                 <select class="form-select" id="categorie" name="categorie" required>
                     <option value="0">Choisir une catégorie</option>
-                        <?php  foreach ($categories as $categorie): ?>
-                            <option value="<?= $categorie['id'] ?>"><?= $categorie['nom'] ?></option>
-                        <?php endforeach; ?>
+                    <?php  foreach ($categories as $categorie): ?>
+                        <option value="<?= $categorie['id'] ?>"><?= $categorie['nom'] ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div><br>
-             <div class="form-group">
+
+            <?php $s_categories = getAll($pdo, 't_s_categories');?>
+            <div class="form-group">
                 <label for="s_categorie" class="mb-2">Sous-catégorie</label>
                 <select class="form-select" id="s_categorie" name="s_categorie">
                     <option value="0">Choisir une sous-catégorie</option>
-                        <?php  foreach ($s_categories as $s_categorie): ?>
-                            <option value="<?= $s_categorie['id'] ?>"><?= $s_categorie['nom'] ?></option>
-                        <?php endforeach; ?>
+                    <?php  foreach ($s_categories as $s_categorie): ?>
+                        <option value="<?= $s_categorie['id'] ?>"><?= $s_categorie['nom'] ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div><br>
-             <div class="form-group">
+
+            <?php $s_s_categories = getAll($pdo, 't_s_s_categories');?>
+            <div class="form-group">
                 <label for="s_s_categorie" class="mb-2">Sous-sous-catégorie</label>
                 <select class="form-select" id="s_s_categorie" name="s_s_categorie">
                     <option value="0">Choisir une sous-sous-catégorie</option>
-                        <?php  foreach ($s_s_categories as $s_s_categorie): ?>
-                            <option value="<?= $s_s_categorie['id'] ?>"><?= $s_s_categorie['nom'] ?></option>
-                        <?php endforeach; ?>
+                    <?php  foreach ($s_s_categories as $s_s_categorie): ?>
+                        <option value="<?= $s_s_categorie['id'] ?>"><?= $s_s_categorie['nom'] ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div><br>
+                
+            <?php $s_s_s_categories = getAll($pdo, 't_s_s_s_categories');?>
             <div class="form-group">
+                <div class="form-group">
                 <label for="s_s_s_categorie" class="mb-2">Sous-sous-sous-catégorie</label>
                 <select class="form-select" id="s_s_s_categorie" name="s_s_s_categorie">
                     <option value="0">Choisir une sous-sous-sous-catégorie</option>
-                        <?php  foreach ($s_s_s_categories as $s_s_s_categorie): ?>
-                            <option value="<?= $s_s_s_categorie['id'] ?>"><?= $s_s_s_categorie['nom'] ?></option>
+                    <?php  foreach ($s_s_s_categories as $s_s_s_categorie): ?>
+                        <option value="<?= $s_s_s_categorie['id'] ?>"><?= $s_s_s_categorie['nom'] ?></option>
                         <?php endforeach; ?>
                 </select>
             </div><br>
-            <div class="form-group">
-                <label for="description" class="mb-2">Description</label>
+            <label for="description" class="mb-2">Description</label>
                 <textarea class="form-control" id="description" name="description" rows="3"></textarea>
             </div><br>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary" id="">Ajouter</button>
             </div>
         </form>
+
+        <?php $livres = getAll($pdo, 't_livres');?>
         <div class="col shadow rounded bg-custom">
             <h4 class="text-center mt-4 p-3 rounded-4 shadow border border-bottom-0 border-2 border-warning">Livres existants</h4>
             <div class="row row-cols-1 row-cols-md-3">
                 <?php foreach ($livres as $livre) { ?> 
-                        <div class="col-md-2 m-2 pt-3 rounded-4 shadow bg-light text-center">
+                    <div class="col-md-2 m-2 pt-3 rounded-4 shadow bg-light text-center">
                             <p class=""><a href="<?= BASE_URL ?>livres.php?id=<?= $livre['id']; ?>"
                             style="display: contents;"><?= $livre['titre']; ?></p>
                         </div>            
-                <?php } ?>
+                        <?php } ?>
             </div>
         </div>
     </div>

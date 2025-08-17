@@ -22,9 +22,9 @@ $navbar->AddItem('', 'Admin/add_categorie.php', 'center', true, 'bi bi-grid-3x3-
 $navbar->AddItem('', 'Admin/add_image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
 $navbar->AddItem('', 'Admin/add_livre.php', 'center', '', 'bi bi-book-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
 
-$navbar->AddItem('תנ"ך','0_tanak.php','dropdown');
-$navbar->AddItem('גמרא','1_talmud.php','dropdown');
-$navbar->AddItem('הלכה', '2_halaka.php', 'dropdown');
+$navbar->AddItem('תנ"ך','Torah/0_tanak.php','dropdown');
+$navbar->AddItem('גמרא','Talmud/1_talmud.php','dropdown');
+$navbar->AddItem('הלכה', 'Halakh/2_halaka.php', 'dropdown');
 $navbar->AddItem('', 'javascript:location.replace(BASE_URL + "logout.php")', 'right', '', 'bi bi-door-open-fill rounded-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-red" title="Déconnexion');
 $navbar->render() ;
 ?>

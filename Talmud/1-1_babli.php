@@ -23,9 +23,9 @@ if (isLoggedIn()) {
     $navbar->AddItem('הלכה', 'Halakha/2_halaka.php', 'dropdown');
     $navbar->AddItem('מוסר', '3_mousar.php', 'dropdown', '');
     $navbar->AddItem('', 'Admin/dashboard.php', 'center', '', 'bi bi-kanban" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Tableau de bord');
-    $navbar->AddItem('', 'Admin/add_image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
-    $navbar->AddItem('', 'Admin/add_categorie.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
+    $navbar->AddItem('', 'Admin/add_categorie.php', 'center', '', 'bi bi-grid-3x3-gap-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Gestion des catégories');
     $navbar->AddItem('', 'Admin/add_livre.php', 'center', '', 'bi bi-book-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
+    $navbar->AddItem('', 'Admin/add_image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
     $navbar->AddItem('', 'javascript:location.replace("logout.php")', 'right', '', 'bi bi-door-open-fill rounded-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-red" title="Déconnexion');
 } else {
     $navbar->AddItem('תנ"ך','0_tanak.php','center');
@@ -65,23 +65,25 @@ $navbar->render() ;
     </div>
     <h1 class="mt-5 mb-5 shadow rounded-4 border border-bottom-0 border-3 "
      data-aos="fade-up" data-aos-duration="1500">תלמוד בבלי</h1>
-     <?php
-        if (!empty($_GET['id'])) {
-            $pdo = connect();
-            $traites = findBy($pdo, 't_livres', 'id_sous_categorie', 5);
-            foreach ($traites as $traite) {
-                if ($traite['id'] == $_GET['id']) {
-                    echo '<h2 class="text-center mb-4">' . htmlspecialchars($traite['titre']) . '</h2>';
-                    echo '<p class="text-center">' . htmlspecialchars($traite['description']) . '</p>';
-                }
-            }
-        } else {
-    ?>
         <form action="<?= BASE_URL ?>Talmud/1-1_babli.php" method="get" class="mb-5">
             <div class="form-group mb-3">
                 <label for="search" class="form-label">Rechercher un traité du Talmud</label>
                 <input type="text" class="form-control" id="search" name="search" placeholder="Ex: Berakhot, Shabbat, etc.">
                 <button type="submit" class="btn btn-primary mt-3">Rechercher</button>
+            </div>
+            <div class="form-group mb-3">
+                <label for="search" class="form-label">Rechercher un traité du Talmud par סדר</label>
+                <select class="form-select" id="seder" name="seder">
+                    <option value="">-- Sélectionner un סדר --</option>
+                    <?php
+                        $pdo = connect();
+                        $seders = findBy($pdo, 't_s_categories', 'id_categorie', 13);
+                        foreach ($seders as $seder) {
+                            echo '<option value="' . htmlspecialchars($seder['id']) . '">' . htmlspecialchars($seder['nom']) . '</option>';
+                        }
+                    ?>
+                    </select>
+                <button type="submit" class="btn btn-primary mt-3">Voir les livres</button>
             </div>
             <div class="form-group mb-3">
                 <!-- Sélectionner une מסכת -->
@@ -100,7 +102,6 @@ $navbar->render() ;
             </div>
         </form>
     <?php
-    }
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $pdo = connect();
         $search = htmlspecialchars($_GET['search']);
@@ -109,6 +110,24 @@ $navbar->render() ;
             echo '<div class="alert alert-danger" role="alert">Aucun traité trouvé pour la recherche : ' . $search . '</div>';
         } else {
             echo '<h2 class="text-center mb-4">Résultats de la recherche pour : ' . $search . '</h2>';
+            foreach ($traites as $traite) {
+                echo '<div class="card mb-3">';
+                echo '<div class="card-body">';
+                echo '<h5 class="card-title">' . htmlspecialchars($traite['titre']) . '</h5>';
+                echo '<p class="card-text">' . htmlspecialchars($traite['description']) . '</p>';
+                echo '<a href="?id=' . htmlspecialchars($traite['id']) . '" class="btn btn-primary">Voir le traité</a>';
+                echo '</div>';
+                echo '</div>';
+            }
+        }
+    } elseif (isset($_GET['seder']) && !empty($_GET['seder'])) {
+        $pdo = connect();
+        $sederId = htmlspecialchars($_GET['seder']);
+        $traites = findBy($pdo, 't_livres', 'id_s_categorie', $sederId);
+        if (empty($traites)) {
+            echo '<div class="alert alert-danger" role="alert">Aucun traité trouvé pour le סדר sélectionné.</div>';
+        } else {
+            echo '<h2 class="text-center mb-4">Livres du סדר sélectionné</h2>';
             foreach ($traites as $traite) {
                 echo '<div class="card mb-3">';
                 echo '<div class="card-body">';
@@ -137,8 +156,8 @@ $navbar->render() ;
                 echo '</div>';
             }
         }
-        }
-        ?>
+    }
+    ?>
 
 </div>
 <?php

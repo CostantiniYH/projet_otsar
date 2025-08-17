@@ -11,10 +11,10 @@ $navbar->AddItem('','index.php','center', true, 'bi bi-house-fill" data-bs-toggl
 
 if (isLoggedIn()) {
     $navbar->AddItem('Livres','livres.php','dropdown', '', 'bi bi-book" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Liste des livres');
-    $navbar->AddItem('תנ"ך','0_tanak.php','dropdown');
-    $navbar->AddItem('גמרא','1_talmud.php','dropdown');
-    $navbar->AddItem('הלכה', '2_halaka.php', 'dropdown');
-    $navbar->AddItem('מוסר', '3_mousar.php', 'dropdown');    
+    $navbar->AddItem('תנ"ך','Torah/0_tanak.php','dropdown');
+    $navbar->AddItem('גמרא','Talmud/1_talmud.php','dropdown');
+    $navbar->AddItem('הלכה', 'Halakha/2_halaka.php', 'dropdown');
+    $navbar->AddItem('מוסר', 'Agada-moussar/3_mousar.php', 'dropdown');    
     $navbar->AddItem('', 'Admin/dashboard.php', 'center', '', 'bi bi-kanban" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Tableau de bord');
     $navbar->AddItem('', 'Admin/add_image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
     $navbar->AddItem('', 'Admin/add_categorie.php', 'center', '', 'bi bi-grid-3x3-gap-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Gestion des catégories');
@@ -65,19 +65,19 @@ $navbar->render() ;
         <?php
             $carousel = new Carousel();
             $a = [
-                ['link' =>  './img/', 'text' => 'תורה'],
-                ['link' =>  './img/', 'text' => 'גמרא'],
-                ['link' =>  './img/', 'text' => 'הלכה'],
-                ['link' =>  './img/', 'text' => 'מרן רבי יוסף קארו'],
-                ['link' => './img/', 'text' => 'מוסר'],
-                ['link' => './img/', 'text' => 'מוסר'],
-                ['link' => './img/', 'text' => 'גמרא'],
-                ['link' => './img/', 'text' => 'גמרא'],
-                ['link' => './img/', 'text' => 'הלכה'],
-                ['link' => './img/', 'text' => 'גמרא'],
-                ['link' => './img/', 'text' => 'הלכה'],
-                ['link' => './img/', 'text' => 'גמרא'],
-                ['link' => './img/', 'text' => 'תורה']
+                ['link' =>  './uploads/', 'text' => 'תורה'],
+                ['link' =>  './uploads/', 'text' => 'גמרא'],
+                ['link' =>  './uploads/', 'text' => 'הלכה'],
+                ['link' =>  './uploads/', 'text' => 'מרן רבי יוסף קארו'],
+                ['link' => './uploads/', 'text' => 'מוסר'],
+                ['link' => './uploads/', 'text' => 'מוסר'],
+                ['link' => './uploads/', 'text' => 'גמרא'],
+                ['link' => './uploads/', 'text' => 'גמרא'],
+                ['link' => './uploads/', 'text' => 'הלכה'],
+                ['link' => './uploads/', 'text' => 'גמרא'],
+                ['link' => './uploads/', 'text' => 'הלכה'],
+                ['link' => './uploads/', 'text' => 'גמרא'],
+                ['link' => './uploads/', 'text' => 'תורה']
             ];      
             
             $carousel->Read($a, 1);
@@ -86,19 +86,19 @@ $navbar->render() ;
     <div class="container">
         <div class="row">
             <div class="col-md-4  mb-5 img-map img-index"  data-aos="flip-right" data-aos-duration="1500" data-aos-delay="500">
-                <img src="./img/tanak.png" class="card-img rounded-4 shadow" alt="מקראות גדולות" usemap="#tanakmap">
+                <img src="./uploads/tanak.jpg" class="card-img rounded-4 shadow" alt="מקראות גדולות" usemap="#tanakmap">
                 <map name="tanakmap">
                 <area shape="rect" coords="0, 0, 350,250" alt="mikraot-guedolot" href="0_tanak.php">
                 </map>
             </div>
             <div class="col-md-4 mb-5 img-map img-index " data-aos="flip-right" data-aos-duration="1500" data-aos-delay="500">
-                <img src="./img/chass-vilna.png" class="card-img rounded-4 shadow" alt="שס" usemap="#talmudmap">
+                <img src="./uploads/chass-vilna.jpg" class="card-img rounded-4 shadow" alt="שס" usemap="#talmudmap">
                 <map name="talmudmap">
                 <area shape="rect" coords="0,0, 350,250" alt="chass-talmud" href="1_talmud.php">
                 </map>
             </div>
             <div class="col-md-4 mb-5 img-map img-index" data-aos="flip-right" data-aos-duration="1500" data-aos-delay="500">
-                <img src="./img/choulhan-arouk.png" class="card-img rounded-4 shadow" alt="הלכה" usemap="#halakamap">
+                <img src="./uploads/choulhan-arouk.jpg" class="card-img rounded-4 shadow" alt="הלכה" usemap="#halakamap">
                 <map name="halakamap">
                 <area shape="rect" coords="0,0, 350,250" alt="halaka" href="2_halaka.php">
                 </map>
@@ -106,7 +106,7 @@ $navbar->render() ;
         </div>
         <div class="row">
             <div class="col-md-12 mb-5 img-map"  data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1000">
-                <img src="./img/ain-yaacov.png" class="card-img rounded-4 shadow" alt="מוסר" usemap="#mousarmap">
+                <img src="./uploads/ain-yaacov.jpg" class="card-img rounded-4 shadow" alt="מוסר" usemap="#mousarmap">
                 <map name="mousarmap">
                 <area shape="rect" coords="0,0, 1200,250" alt="mousar" href="3_mousar.php">
                 </map>

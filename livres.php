@@ -14,10 +14,9 @@ $navbar->AddItem('','index.php','center', '', 'bi bi-house-fill" data-bs-toggle=
 $navbar->AddItem(' Liste','livres.php','center', true, 'bi bi-book" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Liste des livres');
 
 if (isLoggedIn()) {
-    $navbar->AddItem('תנ"ך','0_tanak.php','dropdown');
-    $navbar->AddItem('גמרא','1_talmud.php','dropdown');
-    $navbar->AddItem('הלכה', '2_halaka.php', 'dropdown');
-    $navbar->AddItem('מוסר', '3_mousar.php', 'dropdown');    
+    $navbar->AddItem('תנ"ך','Torah/0_tanak.php','dropdown');    $navbar->AddItem('גמרא','Talmud/1_talmud.php','dropdown');
+    $navbar->AddItem('הלכה', 'Halakha/2_halaka.php', 'dropdown');
+    $navbar->AddItem('מוסר', 'Agada-moussar/3_mousar.php', 'dropdown');    
     $navbar->AddItem('', 'Admin/dashboard.php', 'center', '', 'bi bi-kanban" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Tableau de bord');
     $navbar->AddItem('', 'Admin/add_image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
     $navbar->AddItem('', 'Admin/add_categorie.php', 'center', '', 'bi bi-grid-3x3-gap-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Gestion des catégories');
@@ -72,19 +71,19 @@ $navbar->render() ;
     </h1>
 
     <div class="col-md-12">
-            <p class="text-center">Sélectionnez une catégorie pour voir les livres associés.</p>
-            <form action="<?= BASE_URL ?>livres.php" method="get" class="d-flex justify-content-center mb-4">
-                <select name="id" id="id" class="form-select w-50">
-                    <option value="">Choisir une catégorie</option>
-                    <?php
-                    $categories = getAll($pdo, 't_categories');
-                    foreach ($categories as $categorie): ?>
-                        <option value="<?= $categorie['id'] ?>"><?= $categorie['nom'] ?></option>
-                    <?php endforeach; ?>
-                </select>
-                <button type="submit" class="btn btn-primary ms-2">Voir les livres</button>
-            </form>
-        </div>
+        <p class="text-center">Sélectionnez une catégorie pour voir les livres associés.</p>
+        <form action="<?= BASE_URL ?>livres.php" method="get" class="d-flex justify-content-center mb-4">
+            <select name="id" id="id" class="form-select w-50">
+                <option value="">Choisir une catégorie</option>
+                <?php
+                $categories = getAll($pdo, 't_categories');
+                foreach ($categories as $categorie): ?>
+                    <option value="<?= $categorie['id'] ?>"><?= $categorie['nom'] ?></option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" class="btn btn-primary ms-2">Voir les livres</button>
+        </form>
+    </div>
 
         
     <div class="row gy-5 text-center">

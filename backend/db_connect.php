@@ -51,6 +51,17 @@ function findBy2($pdo, $table, $champ, $id) {
         echo "Erreur : " . $e->getMessage();
     }
 }
+
+function findBy2conditions($pdo, $table, $champ1, $id1, $champ2, $id2) {
+    try {
+        $sql = "SELECT * FROM $table WHERE $champ1 = ? AND $champ2 = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$id1, $id2]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Erreur : " . $e->getMessage();
+    }
+}
 function insert($pdo, $table, $data) {
     try {
         $column = implode(',', array_keys($data));

@@ -38,7 +38,7 @@ if (isLoggedIn()) {
 $navbar->render() ;
 ?>
 
-<div class="container pt-3">
+<div class="container p-5">
 
     <?php if (isset($_GET['erreur'])): ?>
         <div class="alert alert-danger alert-dismissible fade show" data-bs-dismiss="3000" role="alert">

@@ -18,7 +18,8 @@ $pdo = connect();
 $categoryExists = [
     findBy2($pdo, 't_categories', 'nom', $nom_c),
     findBy2($pdo, 't_s_categories', 'nom', $nom_s_c),
-    findBy2($pdo, 't_s_s_categories', 'nom', $nom_s_s_c)
+    findBy2($pdo, 't_s_s_categories', 'nom', $nom_s_s_c),
+    findBy2($pdo, 't_s_s_s_categories', 'nom', $nom_s_s_s_c)
 ];
 
     if (array_filter($categoryExists)) {
@@ -39,11 +40,25 @@ $data_s_s_s_c = [
     'nom' => $nom_s_s_s_c
 ];
 
-var_dump($data) ; 
+var_dump($data_c, $data_s_c, $data_s_s_c, $data_s_s_s_c); ; 
 
-if (insert($pdo,'t_categories',$data_c) || insert($pdo,'t_s_categories',
-$data_s_c) || insert($pdo,'t_s_s_categories',$data_s_s_c) || insert($pdo,
- 't_s_s_s_categories', $data_s_s_s_c))  { 
+$succes = false;
+
+if (!empty($nom_c)) {
+    $succes = insert($pdo, 't_categories', $data_c);
+}
+if (!empty($nom_s_c)) {
+    $succes = insert($pdo, 't_s_categories', $data_s_c);
+}
+if (!empty($nom_s_s_c)) {
+    $succes = insert($pdo, 't_s_s_categories', $data_s_s_c);
+}
+if (!empty($nom_s_s_s_c)) {
+    $succes = insert($pdo, 't_s_s_s_categories', $data_s_s_s_c);
+}
+
+
+if ($succes) {
     header('location: ' . BASE_URL . 'Admin/add_categorie.php?success=Catégorie ajoutée avec succès !');
     exit();
     } else {

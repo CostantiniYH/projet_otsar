@@ -65,19 +65,15 @@ $navbar->render() ;
         <?php
             $carousel = new Carousel();
             $a = [
-                ['link' =>  './uploads/', 'text' => 'תורה'],
-                ['link' =>  './uploads/', 'text' => 'גמרא'],
-                ['link' =>  './uploads/', 'text' => 'הלכה'],
-                ['link' =>  './uploads/', 'text' => 'מרן רבי יוסף קארו'],
-                ['link' => './uploads/', 'text' => 'מוסר'],
-                ['link' => './uploads/', 'text' => 'מוסר'],
-                ['link' => './uploads/', 'text' => 'גמרא'],
-                ['link' => './uploads/', 'text' => 'גמרא'],
-                ['link' => './uploads/', 'text' => 'הלכה'],
-                ['link' => './uploads/', 'text' => 'גמרא'],
-                ['link' => './uploads/', 'text' => 'הלכה'],
-                ['link' => './uploads/', 'text' => 'גמרא'],
-                ['link' => './uploads/', 'text' => 'תורה']
+                ['link' =>  '' . BASE_URL . 'uploads/parchemin_3.jpg', 'text' => 'תורה'],
+                ['link' =>  '' . BASE_URL . 'uploads/guemara.jpg', 'text' => 'גמרא'],
+                ['link' =>  '' . BASE_URL . 'uploads/michnei-torah.jpg', 'text' => 'הלכה'],
+                ['link' =>  '' . BASE_URL . 'uploads/portrait-betyossef.jpg', 'text' => 'מרן רבי יוסף קארו'],
+                ['link' => '' . BASE_URL . 'uploads/ain-yaacov.jpg', 'text' => 'מוסר'],
+                ['link' => '' . BASE_URL . 'uploads/smousar.jpg', 'text' => 'מוסר'],
+                ['link' => '' . BASE_URL . 'uploads/chass-vilna', 'text' => 'גמרא'],
+                ['link' => '' . BASE_URL . 'uploads/yerouchalmi.jpg', 'text' => 'גמרא'],
+                ['link' => '' . BASE_URL . 'uploads/choulhan-arouk.jpg', 'text' => 'הלכה']
             ];      
             
             $carousel->Read($a, 1);

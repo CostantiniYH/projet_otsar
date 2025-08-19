@@ -76,7 +76,7 @@ $navbar->render() ;
                     </select>
                 <button type="submit" class="btn btn-primary mt-3">Voir les livres</button>
             </div>
-            <div class="form-group mb-3" data-aos="flip-up" data-aos-duration="1500">
+            <div class="form-group mb-3" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="1500">
                 <!-- Sélectionner une מסכת -->
                 <label for="tractate" class="form-label">Sélectionner une מסכת</label>
                 <select class="form-select" id="tractate" name="tractate">

@@ -95,24 +95,21 @@ $navbar->render() ;
         <div class="col-md-12 shadow mt-4 p-3 rounded border-start border-black border-2 border-end overflow-auto">
             <table class="table shadow">
                 <tr>
-                    <th >Table מסכתות</th>
+                    <th >Table Livres</th>
                 </tr>
                 <tr>
-                    <th  class=""></th>
-                    <th  class=""></th>
-                    <th  class=""></th>
-                    <th  class=""></th>
-                    <th  class="">מסכת</th>
-                    <th  class="">סדר</th>
+                        <th>קטגוריה</th>
+                        <th>ספר</th>
                 </tr>
-               <!-- <?php foreach ($masseket as $key => $m) : ?>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                <?php endforeach; ?>-->
+                    <?php 
+                    $pdo = connect();
+                    $massekets = getLivre($pdo);
+                    
+                    foreach ($massekets as $masseket) : ?>
+                        <tr>
+                            <td><?= $masseket['titre'] ?></td>
+                        </tr>
+                    <?php endforeach; ?>
             </table>
         </div>
     </div>

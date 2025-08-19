@@ -34,7 +34,8 @@ $navbar->Render();
 
     <a href="<?= BASE_URL ?>index.php" class="btn btn-primary bi bi-arrow-left">Home</a>
         <div class="row">
-            <form action="<?= BASE_URL ?>controllers/login.php" method="post" class="col-md-4 offset-4 shadow p-4 rounded-4 mt-5 mb-5 bg-white">
+            <form action="<?= BASE_URL ?>controllers/login.php" method="post" class="col-md-4 col-sm-12 offset-4 shadow p-4 
+            rounded-4 mt-5 mb-5 bg-white">
                 <h1>Connexion</h1>
                 <div class="form-group form-label">
                     <label for="email">Email :</label>

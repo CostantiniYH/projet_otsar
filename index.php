@@ -21,15 +21,15 @@ if (isLoggedIn()) {
     $navbar->AddItem('', 'Admin/add_livre.php', 'center', '', 'bi bi-book-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
     $navbar->AddItem('', 'javascript:location.replace("logout.php")', 'right', '', 'bi bi-door-open-fill rounded-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-red" title="Déconnexion');
 } else {
-    $navbar->AddItem('תורה', '0-1_torah.php', 'dropdown');
-    $navbar->AddItem('נך', '0-2_nak.php', 'dropdown');
-    $navbar->AddItem('תלמוד בבלי', '1-1_babli.php', 'dropdown');
-    $navbar->AddItem('תלמוד ירושלמי', '1-2_yerouchalmi.php', 'dropdown');
+    $navbar->AddItem('תורה', 'Torah/0-1_torah.php', 'dropdown');
+    $navbar->AddItem('נך', 'Torah/0-2_nak.php', 'dropdown');
+    $navbar->AddItem('תלמוד בבלי', 'Talmud/1-1_babli.php', 'dropdown');
+    $navbar->AddItem('תלמוד ירושלמי', 'Talmud/1-2_yerouchalmi.php', 'dropdown');
     $navbar->AddItem('','livres.php','center', '', 'bi bi-book" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Liste des livres');
-    $navbar->AddItem('תנ"ך','0_tanak.php','center');
-    $navbar->AddItem('גמרא','1_talmud.php','center');
-    $navbar->AddItem('הלכה', '2_halaka.php', 'center');
-    $navbar->AddItem('מוסר', '3_mousar.php', 'center');
+    $navbar->AddItem('תנ"ך','Torah/0_tanak.php','center');
+    $navbar->AddItem('גמרא','Talmud/1_talmud.php','center');
+    $navbar->AddItem('הלכה', 'Halakha/2_halaka.php', 'center');
+    $navbar->AddItem('מוסר', 'Agada-Moussar/3_mousar.php', 'center');
     $navbar->AddItem('','Compte/login.php','right', '', 'bi bi-person-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-right" title="Connexion');
     $navbar->AddItem('Inscription','Compte/register.php', 'right');
     }

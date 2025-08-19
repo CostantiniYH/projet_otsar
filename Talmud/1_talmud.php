@@ -21,9 +21,9 @@ if (isLoggedIn()) {
     $navbar->AddItem('', 'Admin/add_livre.php', 'center', '', 'bi bi-book-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
     $navbar->AddItem('', 'javascript:location.replace("logout.php")', 'right', '', 'bi bi-door-open-fill rounded-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-red" title="Déconnexion');
     } else {
-    $navbar->AddItem('תנ"ך','0_tanak.php','center');
-    $navbar->AddItem('הלכה', '2_halaka.php', 'center');
-    $navbar->AddItem('מוסר', '3_mousar.php', 'center');
+    $navbar->AddItem('תנ"ך','Torah/0_tanak.php','center');
+    $navbar->AddItem('הלכה', 'Halakha/2_halaka.php', 'center');
+    $navbar->AddItem('מוסר', 'Agada-Moussar/3_mousar.php', 'center');
     $navbar->AddItem('','Compte/login.php','right', '', 'bi bi-person-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-right" title="Connexion');
     $navbar->AddItem('Inscription','register.php', 'right');
     }

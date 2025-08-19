@@ -5,13 +5,7 @@ require_once __DIR__ . '/../components/header.php';
 require_once __DIR__ . '/../class/navbar.php';
 require_once __DIR__ . '/../class/carousel.php';
 
-if (!isLoggedIn()) {
-    header('Location: ' . BASE_URL . 'Compte/login.php');
-    exit();
-} else {
-    getUserSession();
-    $success = 'Félicitation ' . htmlspecialchars($_SESSION['user']['prenom']) . ', vous avez accès au תלמוד!';
-}
+//require_login();
 
 $navbar = new Navbar();
 $navbar->AddItem(' אוצר','index.php', 'left', '', 'bi bi-book-half rounded-5 text-white" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-left" title="אוצר הספרים');

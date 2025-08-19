@@ -56,7 +56,7 @@ $navbar->render() ;
         </div>
     <?php endif; ?>
 
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1500">
         <?php if (isAdmin()) { ?>
                     <h1 class="fs-3 shadow p-4 rounded border-start border-black border-2 border-end">
                         Bienvenue sur votre tableau de bords <?= $_SESSION['user']['prenom'] ?> l'admin !</h1>
@@ -67,11 +67,10 @@ $navbar->render() ;
                 
         <?php }; ?>
     
-        <div class="col-md-12 shadow p-3 rounded border-start border-black border-2 border-end overflow-auto">
+        <div class="col-md-12 shadow p-3 rounded border-start border-black border-2 border-end overflow-auto"
+        data-aos="fade-up" data-aos-duration="1500">
             <table class="table shadow ">
-                <tr>
-                    <th>Table utilisateurs</th>
-                </tr>
+                <h2>Table utilisateurs</h2>                
                 <tr>
                     <th  class="table-header">ID User</th>
                     <th  class="table-header">nom</th>
@@ -92,21 +91,28 @@ $navbar->render() ;
                 <?php endforeach; ?>
             </table>
         </div>
-        <div class="col-md-12 shadow mt-4 p-3 rounded border-start border-black border-2 border-end overflow-auto">
+        <div class="col-md-12 shadow mt-4 p-3 rounded border-start border-black border-2 border-end overflow-auto"
+        data-aos="fade-up" data-aos-duration="1000">
             <table class="table shadow">
+                
+                    <h2>Table Livres</h2>
+                
                 <tr>
-                    <th >Table Livres</th>
+                    <th>קטגוריה כללית</th>
+                    <th>קטגוריה פרטית</th>
+                    <th>קטגוריה קטנה</th>
+                    <th>ספר</th>
                 </tr>
                 <tr>
-                        <th>קטגוריה</th>
-                        <th>ספר</th>
-                </tr>
                     <?php 
                     $pdo = connect();
                     $massekets = getLivre($pdo);
                     
                     foreach ($massekets as $masseket) : ?>
                         <tr>
+                            <td><?= $masseket['nom_categorie'] ?></td>
+                            <td><?= $masseket['nom_s_categorie'] ?></td>
+                            <td><?= $masseket['nom_s_s_categorie'] ?></td>
                             <td><?= $masseket['titre'] ?></td>
                         </tr>
                     <?php endforeach; ?>

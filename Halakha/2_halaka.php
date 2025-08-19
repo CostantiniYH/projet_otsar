@@ -5,7 +5,7 @@ require_once __DIR__ . '/../components/header.php';
 require_once __DIR__ . '/../class/navbar.php';
 require_once __DIR__ . '/../class/carousel.php';
 
-require_login();
+//require_login();
 
 
 $navbar = new Navbar();

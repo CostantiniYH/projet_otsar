@@ -53,10 +53,6 @@ $navbar->render() ;
     <div class="container">
         <h1 class="mt-5 mb-5 shadow rounded-4 border border-bottom-0 border-3 border-info"
          data-aos="fade-up" data-aos-duration="1500">מוסר</h1>
-         <div class="alert alert-success alert-dismissible fade show" data-bs-dismiss="3000" 
-         role="alert"><?= $success ;?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
         <div class="row mb-5">
             <div class="col me-5 img-map img-mousar" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
                 <img src="<?= BASE_URL ?>uploads/mousar_2.jpg" class="card-img rounded-4 shadow" alt="מוסר" usemap="#map_3">

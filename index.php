@@ -84,19 +84,19 @@ $navbar->render() ;
             <div class="col-md-4  mb-5 img-map img-index"  data-aos="flip-right" data-aos-duration="1500" data-aos-delay="500">
                 <img src="./uploads/tanak.jpg" class="card-img rounded-4 shadow" alt="מקראות גדולות" usemap="#tanakmap">
                 <map name="tanakmap">
-                <area shape="rect" coords="0, 0, 350,250" alt="mikraot-guedolot" href="0_tanak.php">
+                <area shape="rect" coords="0, 0, 350,250" alt="mikraot-guedolot" href="Torah/0_tanak.php">
                 </map>
             </div>
             <div class="col-md-4 mb-5 img-map img-index " data-aos="flip-right" data-aos-duration="1500" data-aos-delay="500">
                 <img src="./uploads/chass-vilna.jpg" class="card-img rounded-4 shadow" alt="שס" usemap="#talmudmap">
                 <map name="talmudmap">
-                <area shape="rect" coords="0,0, 350,250" alt="chass-talmud" href="1_talmud.php">
+                <area shape="rect" coords="0,0, 350,250" alt="chass-talmud" href="Talmud/1_talmud.php">
                 </map>
             </div>
             <div class="col-md-4 mb-5 img-map img-index" data-aos="flip-right" data-aos-duration="1500" data-aos-delay="500">
                 <img src="./uploads/choulhan-arouk.jpg" class="card-img rounded-4 shadow" alt="הלכה" usemap="#halakamap">
                 <map name="halakamap">
-                <area shape="rect" coords="0,0, 350,250" alt="halaka" href="2_halaka.php">
+                <area shape="rect" coords="0,0, 350,250" alt="halaka" href="Halakha/2_halaka.php">
                 </map>
             </div>
         </div>
@@ -104,7 +104,7 @@ $navbar->render() ;
             <div class="col-md-12 mb-5 img-map"  data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1000">
                 <img src="./uploads/ain-yaacov.jpg" class="card-img rounded-4 shadow" alt="מוסר" usemap="#mousarmap">
                 <map name="mousarmap">
-                <area shape="rect" coords="0,0, 1200,250" alt="mousar" href="3_mousar.php">
+                <area shape="rect" coords="0,0, 1200,250" alt="mousar" href="Agada-Moussar/3_mousar.php">
                 </map>
             </div>
         </div>

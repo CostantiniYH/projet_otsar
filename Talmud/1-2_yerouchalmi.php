@@ -10,22 +10,23 @@ require_once __DIR__ . '/../class/carousel.php';
 $navbar = new Navbar();
 $navbar->AddItem(' אוצר','index.php', 'left', '', 'bi bi-book-half rounded-5 text-white" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-left" title="אוצר הספרים');
 $navbar->AddItem('','index.php','center', '', 'bi bi-house-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Accueil');
-$navbar->AddItem('תלמוד ירושלמי','1-2_yerouchalmi.php','center', true);
+$navbar->AddItem('תלמוד ירושלמי','Talmud/1-2_yerouchalmi.php','center', true);
 if (isLoggedIn()) {
     $navbar->AddItem('','livres.php','dropdown', '', 'bi bi-book" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Liste des livres');
     $navbar->AddItem('תנ"ך','Torah/0_tanak.php','dropdown');    $navbar->AddItem('גמרא','Talmud/1_talmud.php','dropdown');
     $navbar->AddItem('הלכה', 'Halakha/2_halaka.php', 'dropdown');
-    $navbar->AddItem('מוסר', '3_mousar.php', 'dropdown', '');
+    $navbar->AddItem('מוסר', 'Agada-Moussar/3_mousar.php', 'dropdown', '');
     $navbar->AddItem('', 'Admin/dashboard.php', 'center', '', 'bi bi-kanban" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Tableau de bord');
     $navbar->AddItem('', 'Admin/add_categorie.php', 'center', '', 'bi bi-grid-3x3-gap-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Gestion des catégories');
     $navbar->AddItem('', 'Admin/add_livre.php', 'center', '', 'bi bi-book-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
     $navbar->AddItem('', 'Admin/add_image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
     $navbar->AddItem('', 'javascript:location.replace("logout.php")', 'right', '', 'bi bi-door-open-fill rounded-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-red" title="Déconnexion');
 } else {
-    $navbar->AddItem('תנ"ך','0_tanak.php','center');
-    $navbar->AddItem('גמרא','1_talmud.php','center');
-    $navbar->AddItem('הלכה', '2_halaka.php', 'center');
-    $navbar->AddItem('מוסר', '3_mousar.php', 'center', '');
+    $navbar->AddItem('תנ"ך','Torah/0_tanak.php','center');
+    $navbar->AddItem('גמרא','Talmud/1_talmud.php','center');
+    $navbar->AddItem('הלכה', 'Halakha/2_halaka.php', 'center');
+    $navbar->AddItem('תלמוד בבלי','Talmud/1-1_babli.php','dropdown');
+    $navbar->AddItem('מוסר', 'Agada-Moussar/3_mousar.php', 'center', '');
     $navbar->AddItem('','Cmpte/login.php','right', '', 'bi bi-person-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-right" title="Connexion');
     $navbar->AddItem('Inscription','register.php', 'right');
     }
@@ -56,12 +57,12 @@ $navbar->render() ;
     <h1 class="mt-5 mb-5 shadow rounded-4 border border-bottom-0 border-3 "
      data-aos="fade-up" data-aos-duration="1500">תלמוד ירושלמי</h1>
         <form action="<?= BASE_URL ?>Talmud/1-2_yerouchalmi.php" method="get" class="mb-5">
-            <div class="form-group mb-3">
+            <div class="form-group mb-3" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="1000">
                 <label for="search" class="form-label">Rechercher un traité du Talmud</label>
                 <input type="text" class="form-control" id="search" name="search" placeholder="Ex: Berakhot, Shabbat, etc.">
                 <button type="submit" class="btn btn-primary mt-3">Rechercher</button>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-group mb-3" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="1500">
                 <label for="search" class="form-label">Rechercher un traité du Talmud par סדר</label>
                 <select class="form-select" id="seder" name="seder">
                     <option value="">-- Sélectionner un סדר --</option>
@@ -75,7 +76,7 @@ $navbar->render() ;
                     </select>
                 <button type="submit" class="btn btn-primary mt-3">Voir les livres</button>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-group mb-3" data-aos="flip-up" data-aos-duration="1500">
                 <!-- Sélectionner une מסכת -->
                 <label for="tractate" class="form-label">Sélectionner une מסכת</label>
                 <select class="form-select" id="tractate" name="tractate">

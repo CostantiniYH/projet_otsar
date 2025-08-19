@@ -52,10 +52,6 @@ $navbar->render() ;
 
     <h1 class="mt-5 mb-5 shadow rounded-4 border border-bottom-0 border-3 border-success"
      data-aos="fade-up" data-aos-duration="1500">גמרא</h1>
-     <div class="alert alert-success alert-dismissible fade show" data-bs-dismiss="3000" 
-     role="alert"><?= $success ;?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
     <div class="row mb-5">
         <div class="col me-5 img-map img-gmara" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
             <img src="<?= BASE_URL ?>uploads/chass-vilna.jpg" class="card-img rounded-4 shadow" alt="תלמוד בבלי" usemap="#map_3">

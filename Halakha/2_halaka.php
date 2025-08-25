@@ -11,7 +11,7 @@ require_once __DIR__ . '/../class/carousel.php';
 $navbar = new Navbar();
 $navbar->AddItem(' אוצר','index.php', 'left', '', 'bi bi-book-half rounded-5 text-white" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-left" title="אוצר הספרים');
 $navbar->AddItem('','index.php','center', '', 'bi bi-house-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Accueil');
-$navbar->AddItem('הלכה', '2_halaka.php', 'center', true);
+$navbar->AddItem('הלכה', 'Halaka/2_halaka.php', 'center', true);
 if (isLoggedIn()) {
     $navbar->AddItem('תנ"ך','Torah/0_tanak.php','dropdown');    $navbar->AddItem('גמרא','Talmud/1_talmud.php','dropdown');
     $navbar->AddItem('מוסר', 'Agada-moussar/3_mousar.php', 'dropdown');    

@@ -1,5 +1,5 @@
 <?php
-define('BASE_URL', '/projet_otsar/');
+define('BASE_URL', '/');
 function connect() {
     try {
         $dsn = "mysql:host=localhost;dbname=otsar";

@@ -12,7 +12,7 @@ $navbar->AddItem(' אוצר','index.php', 'left', '', 'bi bi-book-half rounded-5
 $navbar->AddItem('','index.php','center', '', 'bi bi-house-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Accueil');
 if (isLoggedIn()) {
     $navbar->AddItem('','livres.php','dropdown', '', 'bi bi-book" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Liste des livres');
-    $navbar->AddItem('תנ"ך','Torah/0_tanak.php','center', true);
+    $navbar->AddItem('תנ"ך','Torah/0_tanak.php','dropdown', true);
     $navbar->AddItem('גמרא','Talmud/1_talmud.php','dropdown');
     $navbar->AddItem('הלכה', 'Halakha/2_halaka.php', 'dropdown');
     $navbar->AddItem('מוסר', 'Agada-moussar/3_mousar.php', 'dropdown');    

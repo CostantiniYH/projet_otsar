@@ -50,6 +50,7 @@ $navbar->render() ;
         </div>
     <?php endif; ?>
     <h1 class="text-center mt-5 mb-4">הלכה</h1>
+    
 </div>
 <?php
 require_once __DIR__ . '/../components/footer.php';

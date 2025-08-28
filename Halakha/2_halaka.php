@@ -44,19 +44,19 @@ $navbar->render() ;
         <div class="col-md-2 img-map img-gmara mx-auto mt-5" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
             <img src="<?= BASE_URL ?>uploads\choulhan-arouk.jpg" class="card-img rounded-4 shadow" alt="שולחן ערוך" usemap="#map_5">
             <map name="map_5">
-                <area shape="rect" coords="0, 0, 450,400" alt="שולחן ערוך" href="0-Halakha\choulhanAroukh.php">
+                <area shape="rect" coords="0, 0, 450,400" alt="שולחן ערוך" href="choulhanAroukh.php">
             </map>
         </div>
         <div class="col-md-2 img-map img-gmara mx-auto mt-5" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
             <img src="<?= BASE_URL ?>uploads\tour.jpg" class="card-img rounded-4 shadow" alt="טור" usemap="#map_5">
             <map name="map_5">
-                <area shape="rect" coords="0, 0, 450,400" alt="טור" href="Halakha\tour.php.php">
+                <area shape="rect" coords="0, 0, 450,400" alt="טור" href="tour.php.php">
             </map>
         </div>
         <div class="col-md-2 img-map img-gmara mx-auto mt-5" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
             <img src="<?= BASE_URL ?>uploads\michnei-torah.jpg" class="card-img rounded-4 shadow" alt="רמב''ם" usemap="#map_6">
             <map name="map_6">
-                <area shape="rect" coords="0, 0, 450,400" alt="רמב''ם" href="Halakha\rambam.php">
+                <area shape="rect" coords="0, 0, 450,400" alt="רמב''ם" href="rambam.php">
             </map>
         </div>
     </div>

@@ -49,8 +49,15 @@ $navbar->render() ;
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php endif; ?>
-    <h1 class="text-center mt-5 mb-4">הלכה</h1>
+
+    <h1 class="shadow rounded-4 border border-bottom-0 border-3 border-primary" data-aos="fade-up" 
+    data-aos-duration="1500">הלכה
+        <h3>שולחן ערוך</h3>
+    </h1>
+
     
+
+
 </div>
 <?php
 require_once __DIR__ . '/../components/footer.php';

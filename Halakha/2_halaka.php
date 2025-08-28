@@ -37,6 +37,9 @@ if (isLoggedIn()) {
 $navbar->render() ;
 ?>
 <div class="container">
+    <?php
+        require_once __DIR__ . '/../components/getMessage.php';
+    ?>
 <div class="container p-4 mt-3 mb-3">    
     <h1 class="shadow rounded-4 border border-bottom-0 border-3 border-primary"
      data-aos="fade-up" data-aos-duration="1500">הלכה</h1>    

@@ -124,11 +124,16 @@ h1, h2 {
 }
 
 .border-reddark {
-    border: 1px solid #8b0a1a;
-    border-color:  #ff0000;
+    border-color:  #ff0000 !important;
 }
 
+.border-marron {
+    border-color: #764117 !important;
+}
 
+.border-blueDark {
+    border-color: #072138;
+}
 
 .carousel {
     object-fit: cover;

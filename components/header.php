@@ -21,5 +21,18 @@
         }
     ?>
 </head>
-<body>                        
+
+<?php
+$page = basename($_SERVER['PHP_SELF'], '.php');
+
+$groupe1 = ['index', ''];
+$groupe2 = ['login', 'register'];
+if (in_array($page, $groupe1)) {
+    $bodyClass = 'bg-light';
+} elseif (in_array($page, $groupe2)) {
+    $bodyClass = 'bg-gray';
+}
+?>
+
+<body class="<?= $bodyClass;?>">                        
     

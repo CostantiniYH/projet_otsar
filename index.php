@@ -45,7 +45,7 @@ $navbar->render() ;
         require_once __DIR__ . '/components/alerts.php';
     ?>
 
-    <h1 class="mb-5 shadow rounded-bottom rounded-4 border border-bottom-0 border-3 border-warning"
+    <h1 class="mb-5 shadow rounded-bottom rounded-4 border border-bottom-0 border-3 border-marron"
      data-aos="fade-down" data-aos-duration="1500" data-aos-delay="1000">Bienvenue dans le אוצר הספרים</h1>
     <div class="carousel col-md-12 mb-5 rounded-4 shadow"
      data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1500">
@@ -68,20 +68,20 @@ $navbar->render() ;
     </div> 
     <div class="container">
         <div class="row">
-            <div class="col-md-4  mb-5 d-flex img-index"  data-aos="flip-left" data-aos-duration="1500" data-aos-delay="500">
-                <img src="./uploads/Torah/tanak.jpg" class="card-img rounded-4 shadow" alt="מקראות גדולות" usemap="#tanakmap">
+            <div class="col-md-4  mb-5 d-flex"  data-aos="flip-left" data-aos-duration="1500" data-aos-delay="500">
+                <img src="./uploads/Torah/tanak.jpg" class="card-img size-img rounded-4 shadow" alt="מקראות גדולות" usemap="#tanakmap">
                 <map name="tanakmap">
                 <area shape="rect" coords="0, 0, 350,250" alt="mikraot-guedolot" href="Torah/0_tanak.php">
                 </map>
             </div>
-            <div class="col-md-4 mb-5 d-flex img-index " data-aos="flip-up" data-aos-duration="1500" data-aos-delay="500">
-                <img src="./uploads/Talmud/chass-vilna.jpg" class="card-img rounded-4 shadow" alt="שס" usemap="#talmudmap">
+            <div class="col-md-4 mb-5 d-flex" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="500">
+                <img src="./uploads/Talmud/chass-vilna.jpg" class="card-img size-img rounded-4 shadow" alt="שס" usemap="#talmudmap">
                 <map name="talmudmap">
                 <area shape="rect" coords="0,0, 350,250" alt="chass-talmud" href="Talmud/1_talmud.php">
                 </map>
             </div>
-            <div class="col-md-4 mb-5 d-flex img-index" data-aos="flip-right" data-aos-duration="1500" data-aos-delay="500">
-                <img src="./uploads/Halakha/choulhan-arouk.jpg" class="card-img rounded-4 shadow" alt="הלכה" usemap="#halakamap">
+            <div class="col-md-4 mb-5 d-flex" data-aos="flip-right" data-aos-duration="1500" data-aos-delay="500">
+                <img src="./uploads/Halakha/choulhan-arouk.jpg" class="card-img size-img rounded-4 shadow" alt="הלכה" usemap="#halakamap">
                 <map name="halakamap">
                 <area shape="rect" coords="0,0, 350,250" alt="halaka" href="Halakha/2_halaka.php">
                 </map>
@@ -89,7 +89,7 @@ $navbar->render() ;
         </div>
         <div class="row">
             <div class="col-md-12 mb-5"  data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1000">
-                <img src="./uploads/Agada-Moussar/ain-yaacov.jpg" class="card-img rounded-4 shadow" alt="מוסר" usemap="#mousarmap">
+                <img src="./uploads/Agada-Moussar/ain-yaacov.jpg" class="card-img size-img rounded-4 shadow" alt="מוסר" usemap="#mousarmap">
                 <map name="mousarmap">
                 <area shape="rect" coords="0,0, 1200,250" alt="mousar" href="Agada-Moussar/3_mousar.php">
                 </map>

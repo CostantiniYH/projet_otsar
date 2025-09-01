@@ -43,8 +43,8 @@ $navbar->render() ;
     <h1 class="mt-5 mb-5 shadow rounded-4 border border-bottom-0 border-3 border-info"
         data-aos="fade-up" data-aos-duration="1500">מוסר</h1>
     <div class="row mb-5">
-        <div class="img-map img-mousar mx-auto" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
-            <img src="<?= BASE_URL ?>uploads/Agada-Moussar/mousar_2.jpg" class="card-img rounded-4 shadow" alt="מוסר" usemap="#map_3">
+        <div class="img-map mx-auto" data-aos=" fade-up" data-aos-duration="1500">
+            <img src="<?= BASE_URL ?>uploads/Agada-Moussar/mousar_2.jpg" class="card-img-top size-img rounded-4 shadow" alt="מוסר" usemap="#map_3">
             <map name="map_3">
                 <area shape="rect" coords="0, 0, 1500,400" alt="mousar" href="#">
             </map>

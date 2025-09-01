@@ -10,33 +10,19 @@ $navbar->AddItem('','index.php','center', '', 'bi bi-house-fill" data-bs-toggle=
 $navbar->AddItem('','Compte/login.php','right', '', 'bi bi-person-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-right" title="Connexion');
 $navbar->render() ;
 ?>
-<link rel="stylesheet" href="<?= BASE_URL ?>styles/style_register.css">
-<div class="container bg-white bg-transparent p-5 shadow">
+
+<!--<link rel="stylesheet" href="<?= BASE_URL ?>styles/style_register.css">-->
+
+<div class="container">
+    <?php
+        require_once __DIR__ . '/../components/alerts.php';
+    ?>    
     
-<?php if (isset($_GET['erreur'])): ?>
-        <div class="alert alert-danger alert-dismissible fade show" data-bs-dismiss="3000" role="alert">
-            <?= htmlspecialchars($_GET['erreur']) ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif; ?>
-    <?php if (isset($_GET['message'])): ?>
-        <div class="alert alert-warning alert-dismissible fade show" data-bs-dismiss="3000" role="alert">
-            <?= htmlspecialchars($_GET['message']) ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif; ?>
-    <?php if (isset($_GET['success'])): ?>
-        <div class="alert alert-success alert-dismissible fade show" data-bs-dismiss="3000" role="alert">
-            <?= htmlspecialchars($_GET['success']) ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif; ?>
+    <a href="<?= BASE_URL ?>index.php" class="btn btn-primary bi bi-arrow-left mt-5"> Home</a>   
     
-    
-    <h1 class="text-center rounded-3 bg-white shadow">Inscription</h1>
-    <a href="<?= BASE_URL ?>index.php" class="btn btn-primary bi bi-arrow-left">Home</a>
     <div class="row p-5">
-        <form action="<?= BASE_URL ?>controllers/register.php" method="post" class="col-md-6 offset-3 border-3 border-start border-end border-primary shadow p-3 rounded-4 bg-white">
+        <form action="<?= BASE_URL ?>controllers/register.php" method="post" class="bg-white col-md-6 mx-auto shadow p-3 rounded-4 border-bottum-0 border-3 border-blueDark">
+            <h1 class="mb-5">Inscription</h1>
             <div class="form-group mb-3">
                 <label for="name">Nom</label>
                 <input type="text" class="form-control" id="name" name="nom" placeholder="Entrez votre nom" required>
@@ -57,8 +43,8 @@ $navbar->render() ;
                 <label for="password2">Confirmer le mot de passe</label>
                 <input type="password" class="form-control" id="password2" name="password2" required>
             </div>
-            <div class="form-group mb-3">
-                <button type="submit" class="col-md-6 offset-3 border-0 rounded bg-primary text-white fs-5">Valider</button>
+            <div class="mx-auto text-center mb-3">
+                <button type="submit" class="p-1 border-0 rounded bg-primary text-white fs-5 w-100">Valider</button>
             </div>
         </form>
     </div>

@@ -46,13 +46,13 @@ $navbar->render() ;
 
     <div class="row">     
         <div class="col-md-6  img-map d-flex mt-5" data-aos="fade-up" data-aos-duration="1500">
-            <img src="<?= BASE_URL ?>uploads/Halakha/choulhan-arouk.jpg" class="card-img rounded-4 shadow" alt="שולחן ערוך" usemap="#map_4">
+            <img src="<?= BASE_URL ?>uploads/Halakha/choulhan-arouk.jpg" class="card-img rounded-4 shadow size-img" alt="שולחן ערוך" usemap="#map_4">
             <map name="map_4">
                 <area shape="rect" coords="0, 0, 600,400" alt="שולחן ערוך" href="<?= BASE_URL ?>Halakha/choulhanAroukh.php">
             </map>
         </div>
         <div class="col-md-6  img-map d-flex mt-5" data-aos="fade-up" data-aos-duration="1500">
-            <img src="<?= BASE_URL ?>uploads/Halakha/tour.jpg" class="card-img rounded-4 shadow" alt="טור" usemap="#map_5">
+            <img src="<?= BASE_URL ?>uploads/Halakha/tour.jpg" class="card-img rounded-4 shadow  size-img" alt="טור" usemap="#map_5">
             <map name="map_5">
                 <area shape="rect" coords="0, 0, 600,400" alt="טור" href="<?= BASE_URL ?>Halakha/tour.php">
             </map>
@@ -60,7 +60,7 @@ $navbar->render() ;
     </div>
     <div class="row mb-5">
         <div class="col-md-12 img-map mt-5" data-aos="fade-up" data-aos-duration="1500">
-            <img src="<?= BASE_URL ?>uploads/Halakha/michnei-torah.jpg" class="card-img rounded-4 shadow" alt="רמב''ם" usemap="#map_6">
+            <img src="<?= BASE_URL ?>uploads/Halakha/michnei-torah.jpg" class="card-img rounded-4 shadow  size-img" alt="רמב''ם" usemap="#map_6">
             <map name="map_6">
                 <area shape="rect" coords="0, 0, 1200,400" alt="רמב''ם" href="<?= BASE_URL ?>Halakha/rambam.php">
             </map>

@@ -138,10 +138,9 @@ h1, h2 {
 }
 
 
-.card-img {
-    width: 100%;
+.size-img {
     object-fit: cover;
-    max-height: 300px;
+    max-height: 250px;
     overflow: hidden;
 }
 

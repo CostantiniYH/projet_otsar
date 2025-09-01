@@ -38,32 +38,33 @@ $navbar->render() ;
 ?>
 <div class="container">
     <?php
-        require_once __DIR__ . '/../components/getMessage.php';
+        require_once __DIR__ . '/../components/alerts.php';
     ?>
-<div class="container p-4 mt-3 mb-3">    
+
     <h1 class="shadow rounded-4 border border-bottom-0 border-3 border-primary"
      data-aos="fade-up" data-aos-duration="1500">הלכה</h1>    
+
     <div class="row">     
         <div class="col-md-2 img-map img-gmara mx-auto mt-5" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
             <img src="<?= BASE_URL ?>uploads\choulhan-arouk.jpg" class="card-img rounded-4 shadow" alt="שולחן ערוך" usemap="#map_5">
             <map name="map_5">
-                <area shape="rect" coords="0, 0, 450,400" alt="שולחן ערוך" href="choulhanAroukh.php">
+                <area shape="rect" coords="0, 0, 450,400" alt="שולחן ערוך" href="<?= BASE_URL ?>Halakha/choulhanAroukh.php">
             </map>
         </div>
         <div class="col-md-2 img-map img-gmara mx-auto mt-5" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
             <img src="<?= BASE_URL ?>uploads\tour.jpg" class="card-img rounded-4 shadow" alt="טור" usemap="#map_5">
             <map name="map_5">
-                <area shape="rect" coords="0, 0, 450,400" alt="טור" href="tour.php.php">
+                <area shape="rect" coords="0, 0, 450,400" alt="טור" href="<?= BASE_URL ?>Halakha/tour.php">
             </map>
         </div>
-        <div class="col-md-2 img-map img-gmara mx-auto mt-5" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
+        <div class="col-md-12 img-map img-gmara mx-auto mt-5" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
             <img src="<?= BASE_URL ?>uploads\michnei-torah.jpg" class="card-img rounded-4 shadow" alt="רמב''ם" usemap="#map_6">
             <map name="map_6">
-                <area shape="rect" coords="0, 0, 450,400" alt="רמב''ם" href="rambam.php">
+                <area shape="rect" coords="0, 0, 450,400" alt="רמב''ם" href="<?= BASE_URL ?>Halakha/rambam.php">
             </map>
         </div>
     </div>
-</div>
+
 </div>
 <?php
 require_once __DIR__ . '/../components/footer.php';

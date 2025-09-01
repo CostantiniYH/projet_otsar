@@ -31,6 +31,11 @@ if (isLoggedIn()) {
     }
 $navbar->render() ;
 ?>
+<div class="container p-4 mt-3 mb-3">
+    <?php
+        require_once __DIR__ . '/../components/alerts.php';
+    ?>
+</div>
 
 <?php
 require_once __DIR__ . '/../components/footer.php';

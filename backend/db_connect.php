@@ -1,5 +1,14 @@
 <?php
-define('BASE_URL', '/');
+// Gérer les chemins d'accès
+$host = $_SERVER['HTTP_HOST'];
+//$scriptName = dirname($_SERVER['SCRIPT_NAME']);
+
+if ($host === 'localhost') {
+    define('BASE_URL', '/projet_otsar/');
+} else {
+    define('BASE_URL', '/');
+}
+
 function connect() {
     try {
         $dsn = "mysql:host=localhost;dbname=otsar";

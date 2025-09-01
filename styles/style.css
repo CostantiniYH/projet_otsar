@@ -141,7 +141,7 @@ h1, h2 {
 .card-img {
     width: 100%;
     object-fit: cover;
-    height: 150px;
+    max-height: 300px;
     overflow: hidden;
 }
 
@@ -150,11 +150,8 @@ img {
     transition: transform 0.5s ease-in-out;
 }
 
-.img-gmara {
-    width: 400px;
-}
 .img-map:hover img {
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: #f90000;
     border: #f90000;
 }

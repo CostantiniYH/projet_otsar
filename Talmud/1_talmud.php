@@ -20,7 +20,7 @@ if (isLoggedIn()) {
     $navbar->AddItem('', 'Admin/add_image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
     $navbar->AddItem('', 'Admin/add_categorie.php', 'center', true, 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
     $navbar->AddItem('', 'Admin/add_livre.php', 'center', '', 'bi bi-book-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
-    $navbar->AddItem('', 'javascript:location.replace("logout.php")', 'right', '', 'bi bi-door-open-fill rounded-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-red" title="Déconnexion');
+    $navbar->AddItem('', 'javascript:location.replace(BASE_URL + "logout.php")', 'right', '', 'bi bi-door-open-fill rounded-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-red" title="Déconnexion');
     } else {
     $navbar->AddItem('תורה', 'Torah/0-1_torah.php', 'dropdown');
     $navbar->AddItem('נך', 'Torah/0-2_nak.php', 'dropdown');
@@ -44,14 +44,14 @@ $navbar->render() ;
     <h1 class="mt-5 mb-5 shadow rounded-4 border border-bottom-0 border-3 border-success"
      data-aos="fade-up" data-aos-duration="1500">גמרא</h1>
     <div class="row mb-5">
-        <div class="col-md-5 img-map img-gmara mx-auto mt-5" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
-            <img src="<?= BASE_URL ?>uploads/chass-vilna.jpg" class="card-img rounded-4 shadow" alt="תלמוד בבלי" usemap="#map_3">
+        <div class="col-md-5 mx-auto d-flex mt-5" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
+            <img src="<?= BASE_URL ?>uploads/Talmud/chass-vilna.jpg" class="card-img rounded-4 shadow" alt="תלמוד בבלי" usemap="#map_3">
             <map name="map_3">
                 <area shape="rect" coords="0, 0, 1500,400" alt="mikraot-guedolot" href="1-1_babli.php">
             </map>
         </div>
-        <div class="col-md-5 img-map img-gmara mx-auto mt-5" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
-            <img src="<?= BASE_URL ?>uploads/yerouchalmi.jpg" class="card-img rounded-4 shadow" alt="תלמוד ירושלמי" usemap="#map_4">
+        <div class="col-md-5 mx-auto d-flex mt-5" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
+            <img src="<?= BASE_URL ?>uploads/Talmud/yerouchalmi.jpg" class="card-img rounded-4 shadow" alt="תלמוד ירושלמי" usemap="#map_4">
             <map name="map_4">
                 <area shape="rect" coords="0, 0, 1500,400" alt="chass-talmud" href="1-2_yerouchalmi.php">
             </map>

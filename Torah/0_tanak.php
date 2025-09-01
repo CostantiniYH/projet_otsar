@@ -49,17 +49,17 @@ if ($pdo) {
 
     <h1 class="shadow rounded-4 border border-bottom-0 border-3 border-primary"
      data-aos="fade-up" data-aos-duration="1500">תנ"ך</h1>    
-    <div class="row">     
-        <div class="col-md-2 img-map img-gmara mx-auto mt-5" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
-            <img src="<?= BASE_URL ?>uploads/nak.jpg" class="card-img rounded-4 shadow" alt="נבאים וכתובים" usemap="#map_1">
+    <div class="row vh-100">     
+        <div class="col-md-6 img-map d-flex mx-auto mt-5 h-25" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
+            <img src="<?= BASE_URL ?>uploads/Torah/nak.jpg" class="card-img rounded-4 shadow" alt="נבאים וכתובים" usemap="#map_1">
             <map name="map_1">
-                <area shape="rect" coords="0, 0, 450,400" alt="chass-talmud" href="0-2_nak.php">
+                <area shape="rect" coords="0, 0, 600,400" alt="chass-talmud" href="0-2_nak.php">
             </map>
         </div>
-        <div class="col-md-2 img-map img-gmara mx-auto mt-5" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
-            <img src="<?= BASE_URL ?>uploads/torah.jpg" class="card-img rounded-4 shadow" alt="תורה" usemap="#map_2">
+        <div class="col-md-6 img-map d-flex mx-auto mt-5 h-25" data-aos=" fade-up" data-aos-duration="1500" data-aos-delay="2500">
+            <img src="<?= BASE_URL ?>uploads/Torah/torah.jpg" class="card-img rounded-4 shadow" alt="תורה" usemap="#map_2">
             <map name="map_2">
-                <area shape="rect" coords="0, 0, 450,400" alt="mikraot-guedolot" href="0-1_torah.php">
+                <area shape="rect" coords="0, 0, 600,400" alt="mikraot-guedolot" href="0-1_torah.php">
             </map>
         </div>
     </div>

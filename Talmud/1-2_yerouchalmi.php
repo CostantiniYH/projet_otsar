@@ -20,7 +20,7 @@ if (isLoggedIn()) {
     $navbar->AddItem('', 'Admin/add_categorie.php', 'center', '', 'bi bi-grid-3x3-gap-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Gestion des catégories');
     $navbar->AddItem('', 'Admin/add_livre.php', 'center', '', 'bi bi-book-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
     $navbar->AddItem('', 'Admin/add_image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
-    $navbar->AddItem('', 'javascript:location.replace("logout.php")', 'right', '', 'bi bi-door-open-fill rounded-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-red" title="Déconnexion');
+    $navbar->AddItem('', 'javascript:location.replace(BASE_URL + "logout.php")', 'right', '', 'bi bi-door-open-fill rounded-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-red" title="Déconnexion');
 } else {
     $navbar->AddItem('תנ"ך','Torah/0_tanak.php','center');
     $navbar->AddItem('גמרא','Talmud/1_talmud.php','center');
@@ -49,7 +49,7 @@ $navbar->render() ;
             <div class="form-group mb-3" data-aos="flip-up" data-aos-duration="1500" data-aos-delay="1500">
                 <label for="search" class="form-label">Rechercher un traité du Talmud par סדר</label>
                 <select class="form-select" id="seder" name="seder">
-                    <option value="">-- Sélectionner un סדר --</option>
+                    <option value="">Sélectionner un סדר</option>
                     <?php
                         $pdo = connect();
                         $seders = findBy($pdo, 't_s_categories', 'id_categorie', 13);
@@ -64,7 +64,7 @@ $navbar->render() ;
                 <!-- Sélectionner une מסכת -->
                 <label for="tractate" class="form-label">Sélectionner une מסכת</label>
                 <select class="form-select" id="tractate" name="tractate">
-                    <option value="">-- Sélectionner une מסכת --</option>
+                    <option value="">Sélectionner une מסכת</option>
                     <?php
                         $pdo = connect();
                         $traites = findBy($pdo, 't_livres', 'id_categorie', 11);

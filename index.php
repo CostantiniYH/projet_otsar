@@ -52,15 +52,15 @@ $navbar->render() ;
         <?php
             $carousel = new Carousel();
             $a = [
-                ['link' =>  '' . BASE_URL . 'uploads/parchemin_3.jpg', 'text' => 'תורה'],
-                ['link' =>  '' . BASE_URL . 'uploads/guemara.jpg', 'text' => 'גמרא'],
-                ['link' =>  '' . BASE_URL . 'uploads/michnei-torah.jpg', 'text' => 'הלכה'],
-                ['link' =>  '' . BASE_URL . 'uploads/portrait-betyossef.jpg', 'text' => 'מרן רבי יוסף קארו'],
-                ['link' => '' . BASE_URL . 'uploads/ain-yaacov.jpg', 'text' => 'מוסר'],
-                ['link' => '' . BASE_URL . 'uploads/smousar.jpg', 'text' => 'מוסר'],
-                ['link' => '' . BASE_URL . 'uploads/chass-vilna', 'text' => 'גמרא'],
-                ['link' => '' . BASE_URL . 'uploads/yerouchalmi.jpg', 'text' => 'גמרא'],
-                ['link' => '' . BASE_URL . 'uploads/choulhan-arouk.jpg', 'text' => 'הלכה']
+                ['link' =>  '' . BASE_URL . 'uploads/Torah/parchemin_3.jpg', 'text' => 'תורה'],
+                ['link' =>  '' . BASE_URL . 'uploads/Talmud/guemara.jpg', 'text' => 'גמרא'],
+                ['link' =>  '' . BASE_URL . 'uploads/Halakha/michnei-torah.jpg', 'text' => 'הלכה'],
+                ['link' =>  '' . BASE_URL . 'uploads/Portraits/portrait-betyossef.jpg', 'text' => 'מרן רבי יוסף קארו'],
+                ['link' => '' . BASE_URL . 'uploads/Agada-Moussa/ain-yaacov.jpg', 'text' => 'מוסר'],
+                ['link' => '' . BASE_URL . 'uploads/Agada-Moussa/smousar.jpg', 'text' => 'מוסר'],
+                ['link' => '' . BASE_URL . 'uploads/Talmud/chass-vilna', 'text' => 'גמרא'],
+                ['link' => '' . BASE_URL . 'uploads/Talmud/yerouchalmi.jpg', 'text' => 'גמרא'],
+                ['link' => '' . BASE_URL . 'uploads/Halakha/choulhan-arouk.jpg', 'text' => 'הלכה']
             ];      
             
             $carousel->Read($a, 1);
@@ -68,28 +68,28 @@ $navbar->render() ;
     </div> 
     <div class="container">
         <div class="row">
-            <div class="col-md-4  mb-5 img-map img-index"  data-aos="flip-right" data-aos-duration="1500" data-aos-delay="500">
-                <img src="./uploads/tanak.jpg" class="card-img rounded-4 shadow" alt="מקראות גדולות" usemap="#tanakmap">
+            <div class="col-md-4  mb-5 d-flex img-index"  data-aos="flip-left" data-aos-duration="1500" data-aos-delay="500">
+                <img src="./uploads/Torah/tanak.jpg" class="card-img rounded-4 shadow" alt="מקראות גדולות" usemap="#tanakmap">
                 <map name="tanakmap">
                 <area shape="rect" coords="0, 0, 350,250" alt="mikraot-guedolot" href="Torah/0_tanak.php">
                 </map>
             </div>
-            <div class="col-md-4 mb-5 img-map img-index " data-aos="flip-right" data-aos-duration="1500" data-aos-delay="500">
-                <img src="./uploads/chass-vilna.jpg" class="card-img rounded-4 shadow" alt="שס" usemap="#talmudmap">
+            <div class="col-md-4 mb-5 d-flex img-index " data-aos="flip-up" data-aos-duration="1500" data-aos-delay="500">
+                <img src="./uploads/Talmud/chass-vilna.jpg" class="card-img rounded-4 shadow" alt="שס" usemap="#talmudmap">
                 <map name="talmudmap">
                 <area shape="rect" coords="0,0, 350,250" alt="chass-talmud" href="Talmud/1_talmud.php">
                 </map>
             </div>
-            <div class="col-md-4 mb-5 img-map img-index" data-aos="flip-right" data-aos-duration="1500" data-aos-delay="500">
-                <img src="./uploads/choulhan-arouk.jpg" class="card-img rounded-4 shadow" alt="הלכה" usemap="#halakamap">
+            <div class="col-md-4 mb-5 d-flex img-index" data-aos="flip-right" data-aos-duration="1500" data-aos-delay="500">
+                <img src="./uploads/Halakha/choulhan-arouk.jpg" class="card-img rounded-4 shadow" alt="הלכה" usemap="#halakamap">
                 <map name="halakamap">
                 <area shape="rect" coords="0,0, 350,250" alt="halaka" href="Halakha/2_halaka.php">
                 </map>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 mb-5 img-map"  data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1000">
-                <img src="./uploads/ain-yaacov.jpg" class="card-img rounded-4 shadow" alt="מוסר" usemap="#mousarmap">
+            <div class="col-md-12 mb-5"  data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1000">
+                <img src="./uploads/Agada-Moussar/ain-yaacov.jpg" class="card-img rounded-4 shadow" alt="מוסר" usemap="#mousarmap">
                 <map name="mousarmap">
                 <area shape="rect" coords="0,0, 1200,250" alt="mousar" href="Agada-Moussar/3_mousar.php">
                 </map>

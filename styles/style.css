@@ -140,7 +140,7 @@ h1, h2 {
 
 .size-img {
     object-fit: cover;
-    max-height: 250px;
+    max-height: 200px;
     overflow: hidden;
 }
 

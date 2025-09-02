@@ -1,19 +1,23 @@
 <?php
 // Gérer les chemins d'accès
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https" : "http";
 $host = $_SERVER['HTTP_HOST'];
 //$scriptName = dirname($_SERVER['SCRIPT_NAME']);
 
-if ($host === 'localhost') {
-    define('BASE_URL', '/projet_otsar/');
+if ($host === 'localhost' || $host === '127.0.0.1') {
+    define('BASE_URL', $protocol . '://' . $host . '/projet_otsar/');
+    //define('BASE_URL', '/projet_otsar/');
 } else {
-    define('BASE_URL', '/');
+    //define('BASE_URL', '/');    
+    //define('BASE_URL', $protocol . '://83.159.94.100:8090/');
+    define('BASE_URL', $protocol . '://192.168.197.179:8090/');
 }
 
 function connect() {
     try {
         $dsn = "mysql:host=localhost;dbname=otsar";
-        $user = "root";
-        $password = "";
+        $user = "YHC";
+        $password = "Yaacov2790.";
 
         $pdo = new PDO($dsn, $user, $password, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

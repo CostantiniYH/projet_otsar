@@ -21,7 +21,7 @@ $navbar->render() ;
     <a href="<?= BASE_URL ?>index.php" class="btn btn-primary bi bi-arrow-left mt-5"> Home</a>   
     
     <div class="row p-5">
-        <form action="<?= BASE_URL ?>controllers/register.php" method="post" class="bg-white col-md-6 mx-auto shadow p-3 rounded-4 border-bottum-0 border-3 border-blueDark">
+        <form action="<?= BASE_URL ?>controllers/Compte/register.php" method="post" class="bg-white col-md-6 mx-auto shadow p-3 rounded-4 border-bottum-0 border-3 border-blueDark">
             <h1 class="mb-5">Inscription</h1>
             <div class="form-group mb-3">
                 <label for="name">Nom</label>

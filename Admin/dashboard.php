@@ -6,14 +6,12 @@ require_once __DIR__ . '/../class/navbar.php';
 
 require_login();
 
-if (isLoggedIn()) {
-    getUserSession();
-    if (isAdmin()) {
-        echo "Ecoute c'est pas mal, heureusement que t'es admin, sinon t'aurais été tej vite fait !";
-    } else {
-        echo "Vous êtes connecté en tant qu'utilisateur simple !";
-    } 
+if (!isAdmin()) {
+    $_SESSION['error'] = "Accès refusé. Vous n'avez pas les droits nécessaires.";
+    header('Location: ' . BASE_URL . 'index.php');
+    exit();
 }
+
 
 
 
@@ -24,37 +22,21 @@ $navbar = new Navbar();
 $navbar->AddItem(' אוצר','index.php', 'left', '', 'bi bi-book-half rounded-5 text-white" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-left" title="אוצר הספרים');
 $navbar->AddItem('','index.php','center', '', 'bi bi-house-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Accueil');
 $navbar->AddItem('', 'Admin/dashboard.php', 'center', true, 'bi bi-kanban" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Tableau de bord');
-$navbar->AddItem('', 'Admin/add_categorie.php', 'center', '', 'bi bi-grid-3x3-gap-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Gestion des catégories');
-$navbar->AddItem('', 'Admin/add_image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
-$navbar->AddItem('', 'Admin/add_livre.php', 'center', '', 'bi bi-book-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
+$navbar->AddItem('', 'Form/Create-Update/categorie.php', 'center', '', 'bi bi-grid-3x3-gap-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Gestion des catégories');
+$navbar->AddItem('', 'Form/Create-Update/image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
+$navbar->AddItem('', 'Form/Create-Update/livre.php', 'center', '', 'bi bi-book-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
 
-$navbar->AddItem('תנ"ך','0_tanak.php','dropdown');
-$navbar->AddItem('גמרא','1_talmud.php','dropdown');
-$navbar->AddItem('הלכה', '2_halaka.php', 'dropdown');
+$navbar->AddItem('תנ"ך','Torah/0_tanak.php','dropdown');
+$navbar->AddItem('גמרא','Talmud/1_talmud.php','dropdown');
+$navbar->AddItem('הלכה', 'Halakh/2_halaka.php', 'dropdown');
 $navbar->AddItem('', 'javascript:location.replace(BASE_URL + "logout.php")', 'right', '', 'bi bi-door-open-fill rounded-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-red" title="Déconnexion');
 $navbar->render() ;
 ?>
 
-<div class="container p-3">
-
-    <?php if (isset($_GET['erreur'])): ?>
-        <div class="alert alert-danger alert-dismissible fade show" data-bs-dismiss="3000" role="alert">
-            <?= htmlspecialchars($_GET['erreur']) ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif; ?>
-    <?php if (isset($_GET['message'])): ?>
-        <div class="alert alert-warning alert-dismissible fade show" data-bs-dismiss="3000" role="alert">
-            <?= htmlspecialchars($_GET['message']) ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif; ?>
-    <?php if (isset($_GET['success'])): ?>
-        <div class="alert alert-success alert-dismissible fade show" data-bs-dismiss="3000" role="alert">
-            <?= htmlspecialchars($_GET['success']) ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif; ?>
+<div class="container mt-5 mb-5">
+    <?php
+        require_once __DIR__ . '/../components/alerts.php'; 
+    ?>
 
     <div class="row d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1500">
         <?php if (isAdmin()) { ?>
@@ -77,7 +59,8 @@ $navbar->render() ;
                     <th  class="table-header">Prénom</th>
                     <th  class="table-header">Adresse Email</th>
                     <th  class="table-header">Role</th>
-                    <th  class="table-header">Créations</th>
+                    <th  class="table-header">Création</th>
+                    <th  class="table-header">Action</th>
                 </tr>
                 <?php foreach ($user as $key =>$u) : ?>
                     <tr>                    
@@ -87,6 +70,23 @@ $navbar->render() ;
                         <td><?= $u['mail'] ?></td>
                         <td><?= $u['role'] ?></td>
                         <td><?= $u['created_at'] ?></td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <input type="hidden" name="id" value="<?= $u['id'] ?>">
+                                <button type="button" href="<?= BASE_URL ?>Compte/dashboard.php" class="
+                                btn btn-primary btn-sm bi bi-eye"></button>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <input type="hidden" name="id" value="<?= $u['id'] ?>">
+                                <button type="button" href="<?= BASE_URL ?>Form/Compte/user.php" class="btn btn-warning btn-sm bi bi-pencil"></button>
+                            </div>
+                            <form action="<?= BASE_URL ?>controllers/Delete/user.php">
+                                <input type="hidden" name="id" value="<?= $u['id'] ?>">
+                                <button type="submit" class="btn btn-danger btn-sm bi bi-trash"
+                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');"></button>
+                            </form>
+
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </table>
@@ -114,6 +114,42 @@ $navbar->render() ;
                             <td><?= $masseket['nom_s_categorie'] ?></td>
                             <td><?= $masseket['nom_s_s_categorie'] ?></td>
                             <td><?= $masseket['titre'] ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+            </table>
+        </div>
+        <div class="col-md-12 shadow mt-4 p-3 rounded border-start border-black border-2 border-end overflow-auto"
+        data-aos="fade-up" data-aos-duration="1000">
+            <table class="table shadow">
+                
+                    <h2>Table Images</h2>
+                
+                <tr>
+                    <th>Image</th>
+                    <th>Titre</th>                    
+                    <th>Catégorie</th>
+                    <th>Ajoutée le</th>
+                    <th>Action</th>
+                </tr>
+                <!--  foreach ($images as $image) : -->
+                <?php 
+                    $pdo = connect();
+                    $images = getAllInnerJoin($pdo, 't_images', 't_categories', 'nom AS nom_categorie', 't_images.id_categorie = t_categories.id');
+                    
+                    foreach ($images as $image) : ?>
+                        <tr>
+                            <td><img src="<?= /*BASE_URL . 'uploads/' .*/ $image['chemin'] ?>" alt="<?= $image['nom'] ?>" width="100"></td>
+                            <td><?= $image['nom'] ?></td>                            
+                            <td><?= $image['nom_categorie'] ?></td>
+                            <td><?= $image['date_upload'] ?></td>
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <input type="hidden" name="id" value="<?= $image['id'] ?>">
+                                    <button type="button" href="Crud/update_image.php" class="btn btn-warning btn-sm bi bi-pencil"></button>
+                                <form action="<?= BASE_URL ?>controllers/delete_image.php" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette image ?');">
+                                    <input type="hidden" name="id" value="<?= $image['id'] ?>">
+                                    <button type="submit" class="btn btn-danger btn-sm bi bi-trash"></button>
+                                </form>
                         </tr>
                     <?php endforeach; ?>
             </table>

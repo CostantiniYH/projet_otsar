@@ -1,8 +1,9 @@
 <?php
-require_once __DIR__ . '/../backend/db_connect.php';
+require_once __DIR__ . '/../../backend/db_connect.php';
+require_once __DIR__ . '/../../controllers/session.php';
 
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-        header('location: ' . BASE_URL . 'Admin/add_categorie.php?erreur=Accès interdit !');
+        header('location: ' . BASE_URL . 'Form/Create-Update/categorie.php?erreur=Accès interdit !');
         exit();
     }
 
@@ -23,7 +24,7 @@ $categoryExists = [
 ];
 
     if (array_filter($categoryExists)) {
-        header('location: ' . BASE_URL . 'Admin/add_categorie.php?message=La catégorie existe déjà.');
+        header('location: ' . BASE_URL . 'Form/Create-Update/categorie.php?message=La catégorie existe déjà.');
         exit();
     }
 
@@ -40,7 +41,7 @@ $data_s_s_s_c = [
     'nom' => $nom_s_s_s_c
 ];
 
-var_dump($data_c, $data_s_c, $data_s_s_c, $data_s_s_s_c); ; 
+//var_dump($data_c, $data_s_c, $data_s_s_c, $data_s_s_s_c);
 
 $succes = false;
 
@@ -59,10 +60,10 @@ if (!empty($nom_s_s_s_c)) {
 
 
 if ($succes) {
-    header('location: ' . BASE_URL . 'Admin/add_categorie.php?success=Catégorie ajoutée avec succès !');
+    header('location: ' . BASE_URL . 'Form/Create-Update/categorie.php?success=Catégorie ajoutée avec succès !');
     exit();
     } else {
-        header('location: ' . BASE_URL . 'Admin/add_categorie.php?erreur=Erreur lors de l\'ajout de la catégorie !');    
+        header('location: ' . BASE_URL . 'Form/Create-Update/categorie.php?erreur=Erreur lors de l\'ajout de la catégorie !');    
         exit();;
     }
 ?>

@@ -39,6 +39,16 @@ function getAll($pdo, $table) {
         echo "Erreur : " . $e->getMessage();
     }
 }
+ function getAllInnerJoin($pdo, $table, $joinTable, $joinElement, $joinCondition) {
+    try {
+        $sql = "SELECT $table.*, $joinTable.$joinElement FROM $table INNER JOIN $joinTable ON $joinCondition";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Erreur : " . $e->getMessage();
+    }
+}
 
 function findBy($pdo, $table, $field, $value) {
     try {
@@ -155,7 +165,7 @@ function getUser($pdo) {
 
 function getLivre($pdo) {
     try {
-        $sql = "SELECT l.*, c.nom AS nom_categorie, s_c.nom AS nom_s_categorie, s_s_c.nom AS 
+        $sql = "SELECT l.*, c.nom AS nom_categorie, c.nom_path AS nom_path, s_c.nom AS nom_s_categorie, s_s_c.nom AS 
         nom_s_s_categorie, s_s_s_c.nom AS nom_s_s_s_categorie
                 FROM t_livres l
                 LEFT JOIN t_categories c ON l.id_categorie = c.id

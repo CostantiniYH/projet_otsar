@@ -1,8 +1,8 @@
 <?php 
-require_once __DIR__ . '/../backend/db_connect.php';
-require_once __DIR__ . '/../controllers/session.php';
-require_once __DIR__ . '/../components/header.php';
-require_once __DIR__ . '/../class/navbar.php';
+require_once __DIR__ . '/../../backend/db_connect.php';
+require_once __DIR__ . '/../../controllers/session.php';
+require_once __DIR__ . '/../../components/header.php';
+require_once __DIR__ . '/../../class/navbar.php';
 
 $navbar = new Navbar();
 $navbar->AddItem(' אוצר','index.php', 'left', '', 'bi bi-book-half rounded-5 text-white" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-left" title="אוצר הספרים');
@@ -12,12 +12,12 @@ $navbar->Render();
 ?>
 <div class="container mt-5 mb-5">
     <?php
-        require_once __DIR__ . '/../components/alerts.php';
+        require_once __DIR__ . '/../../components/alerts.php';
     ?>
 
     <a href="<?= BASE_URL ?>index.php" class="btn btn-primary bi bi-arrow-left"> Home</a>
     <div class="row ">
-        <form action="<?= BASE_URL ?>controllers/login.php" method="post" class="col-md-4 shadow p-4 
+        <form action="<?= BASE_URL ?>controllers/Compte/login.php" method="post" class="col-md-4 shadow p-4 
         rounded-4 mt-5 mb-5 bg-white mx-auto">
             <h1>Connexion</h1>
             <div class="form-group form-label">
@@ -36,5 +36,5 @@ $navbar->Render();
 
 </div>
 <?php
-require_once __DIR__ . '/../components/footer.php';
+require_once __DIR__ . '/../../components/footer.php';
 ?>

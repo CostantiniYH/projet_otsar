@@ -1,15 +1,16 @@
 <?php
-require_once __DIR__ . '/../backend/db_connect.php';
-require_once __DIR__ . '/../controllers/session.php';
-require_once __DIR__ . '/../components/header.php';
-require_once __DIR__ . '/../class/navbar.php';
+require_once __DIR__ . '/../../backend/db_connect.php';
+require_once __DIR__ . '/../../controllers/session.php';
+require_once __DIR__ . '/../../components/header.php';
+require_once __DIR__ . '/../../class/navbar.php';
 
 require_login();
 
 $pdo = connect();
 
 $categories = getAll($pdo, 't_categories');
-$images = getAll($pdo, 't_images');
+//$images = getAll($pdo, 't_images');
+$images = getAllInnerJoin($pdo, 't_images', 't_categories', 'nom AS nom_categorie', 't_images.id_categorie = t_categories.id');
 
 $navbar = new Navbar();
 $navbar->AddItem(' אוצר','index.php', 'left', '', 'bi bi-book-half rounded-5 text-white" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-left" title="אוצר הספרים');
@@ -27,29 +28,13 @@ $navbar->render() ;
 ?>
 
 <div class="container p-3">
-
-    <?php if (isset($_GET['erreur'])): ?>
-        <div class="alert alert-danger alert-dismissible fade show" data-bs-dismiss="3000" role="alert">
-            <?= htmlspecialchars($_GET['erreur']) ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif; ?>
-    <?php if (isset($_GET['message'])): ?>
-        <div class="alert alert-warning alert-dismissible fade show" data-bs-dismiss="3000" role="alert">
-            <?= htmlspecialchars($_GET['message']) ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif; ?>
-    <?php if (isset($_GET['success'])): ?>
-        <div class="alert alert-success alert-dismissible fade show" data-bs-dismiss="3000" role="alert">
-            <?= htmlspecialchars($_GET['success']) ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    <?php endif; ?>
+    <?php
+        require_once __DIR__ . '/../../components/alerts.php';
+    ?>
 
     <div class="row mt-4 mb-4 gap-4">
         <h3 class="text-center mb-4 p-3 rounded-4 shadow border border-bottom-0 border-3 border-warning">Ajouter une image et banque d'image</h3>
-        <form action="<?= BASE_URL ?>controllers/add_image.php" method="post" class="col-md-5 shadow p-4 rounded-4" enctype="multipart/form-data">
+        <form action="<?= BASE_URL ?>controllers/Create-Update/image.php" method="post" class="col-md-5 shadow p-4 rounded-4" enctype="multipart/form-data">
             <h4 class="text-center">Image</h4>
             <div class="form-group">
                 <label for="image" class="mb-2">Image</label>
@@ -78,7 +63,7 @@ $navbar->render() ;
             <div class="row row-cols-1 row-cols-md-3">
                 <?php foreach ($images as $image => $value) { ?>
                         <div class="col-md-3 mb-2">
-                            <?php require __DIR__ . '/../components/image.php';?>
+                            <?php require __DIR__ . '/../../components/image.php';?>
                         </div>            
                 <?php } ?>
             </div>
@@ -86,5 +71,5 @@ $navbar->render() ;
     </div>
 </div>
 <?php
-require_once __DIR__ . '/../components/footer.php';
+require_once __DIR__ . '/../../components/footer.php';
 ?>

@@ -1,10 +1,11 @@
 <?php
-require_once __DIR__ . '/../backend/db_connect.php';
-require_once __DIR__ . '/../class/image.php';
-require_once __DIR__ . '/../class/upload.php';
+require_once __DIR__ . '/../../backend/db_connect.php';
+require_once __DIR__ . '/../../controllers/session.php';
+require_once __DIR__ . '/../../class/image.php';
+require_once __DIR__ . '/../../class/upload.php';
 
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-        header('location: ' . BASE_URL . 'Admin/add_image.php?erreur=Accès interdit !');
+        header('location: ' . BASE_URL . 'Form/Create-Update/image.php?erreur=Accès interdit !');
         exit();
     }
 
@@ -42,12 +43,12 @@ $pdo = connect();
 
 $livreExistant = findBy($pdo, 't_livres',  'titre', $nom);
 if ($livreExistant) {
-    header('location: ' . BASE_URL . 'Admin/add_livre.php?message=Le livre a déjà été ajouté !');
+    header('location: ' . BASE_URL . 'Form/Create-Update/livre.php?message=Le livre a déjà été ajouté !');
     exit();
 }
 
 if ($c == 0 && $s_c == 0 && $s_s_c == 0 && $s_s_s_c == 0) {
-    header('location: ' . BASE_URL . 'Admin/add_livre.php?message=Veuillez sélectionner au moins une catégorie.');
+    header('location: ' . BASE_URL . 'Form/Create-Update/livre.php?message=Veuillez sélectionner au moins une catégorie.');
     exit();
 }
 
@@ -62,13 +63,12 @@ $data = [
     'image' => $destination
 ];
 
-var_dump($data);
+//var_dump($data);
 //exit();
 
 if (insert($pdo, 't_livres', $data)) { 
-    header('location: ' . BASE_URL . 'Admin/add_livre.php?success=Livre ajouté avec succès !');
+    header('location: ' . BASE_URL . 'Form/Create-Update/livre.php?success=Livre ajouté avec succès !');
 } else {
-    echo "Erreur lors de l'ajout du livre : " . implode(', ', $upload->getError());
-    //header('location: ' . BASE_URL . 'Admin/add_livre.php?erreur=Erreur lors de l\'ajout du livre !');    
-    //exit();
+    header('location: ' . BASE_URL . 'Form/Create-Update/livre.php?erreur=Erreur lors de l\'ajout du livre : ' . implode(', ', $upload->getError()) . '');
+    exit();
 }

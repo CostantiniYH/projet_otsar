@@ -33,6 +33,5 @@ if (in_array($page, $groupe1)) {
     $bodyClass = 'bg-gray';
 }
 ?>
-
-<body class="<?= $bodyClass;?>">                        
+<body class="">                        
     

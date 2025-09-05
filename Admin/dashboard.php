@@ -12,9 +12,6 @@ if (!isAdmin()) {
     exit();
 }
 
-
-
-
 $pdo = connect();
 $user = getUser($pdo);
 
@@ -48,6 +45,24 @@ $navbar->render() ;
                         Bienvenue, <?= $_SESSION['user']['prenom'] . ' ' . $_SESSION['user']['nom'] ?> !</p>
                 
         <?php }; ?>
+
+        <?php 
+        $is_local = ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['REMOTE_ADDR'] === '127..0.0.1');
+        if ($is_local) { ?>
+        <div class="col-md-12 shadow mt-4 mb-4 text-center p-3 rounded border-start border-black border-2 border-end overflow-auto">
+            <h3>Cliquer ici pour lancer le déploiement :</h3>
+            <form method="post" action="<?= BASE_URL ?>controllers/deploy.php">
+                <div class="d-flex col-md-3 mx-auto mt-3">
+                <select name="remote" class="form-select mx-auto mb-3" aria-label="Default select example">
+                    <option value="origin">origin</option>
+                    <option value="mobile">mobile</option>
+                    <option value="github">github</option>
+                </select>
+                </div>
+                <input type="hidden" name="token" value="token_de_ouf_impossible_à_craquer">
+                <button type="submit" class="btn btn-primary bi bi-cloud-upload"> Déployer maintenant</button>
+        </div>
+        <?php } ?>
     
         <div class="col-md-12 shadow p-3 rounded border-start border-black border-2 border-end overflow-auto"
         data-aos="fade-up" data-aos-duration="1500">
@@ -156,6 +171,19 @@ $navbar->render() ;
         </div>
     </div>
 </div>
+<script>
+fetch('BASE_URL + controllers/deploy.php', { method: 'POST', body: new URLSearchParams({ token: 'MON_TOKEN' }) })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'ok') {
+            // Redirection après succès
+            window.location.href = 'BASE_URL + Admin/dashboard.php';
+        } else {
+            alert('Erreur pendant le déploiement');
+        }
+    });
+</script>
+
 
 <?php
 require_once __DIR__ . '/../components/footer.php';

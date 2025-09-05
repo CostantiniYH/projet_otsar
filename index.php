@@ -22,6 +22,7 @@ if (isLoggedIn()) {
     $navbar->AddItem('', 'Form/Create-Update/image.php', 'center', '', 'bi bi-image" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter une image');
     $navbar->AddItem('', 'Form/Create-Update/categorie.php', 'center', '', 'bi bi-grid-3x3-gap-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Gestion des catégories');
     $navbar->AddItem('', 'Form/Create-Update/livre.php', 'center', '', 'bi bi-book-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Ajouter un livre');
+
     $navbar->AddItem('', 'javascript:location.replace("logout.php")', 'right', '', 'bi bi-door-open-fill rounded-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-red" title="Déconnexion');
 } else {
     $navbar->AddItem('תורה', 'Torah/0-1_torah.php', 'dropdown');
@@ -33,8 +34,9 @@ if (isLoggedIn()) {
     $navbar->AddItem('גמרא','Talmud/1_talmud.php','center');
     $navbar->AddItem('הלכה', 'Halakha/2_halaka.php', 'center');
     $navbar->AddItem('מוסר', 'Agada-Moussar/3_mousar.php', 'center');
-    $navbar->AddItem('','Compte/login.php','right', '', 'bi bi-person-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-right" title="Connexion');
-    $navbar->AddItem('Inscription','Compte/register.php', 'right');
+
+    $navbar->AddItem('','Form/Compte/login.php','right', '', 'bi bi-person-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-right" title="Connexion');
+    $navbar->AddItem('Inscription','Form/Compte/register.php', 'right');
     }
 
 $navbar->render() ;

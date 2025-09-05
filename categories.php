@@ -32,8 +32,9 @@ if (isLoggedIn()) {
     $navbar->AddItem('גמרא','Talmud/1_talmud.php','center');
     $navbar->AddItem('הלכה', 'Halakha/2_halaka.php', 'center');
     $navbar->AddItem('מוסר', 'Agada-Moussar/3_mousar.php', 'center');
-    $navbar->AddItem('','Compte/login.php','right', '', 'bi bi-person-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-right" title="Connexion');
-    $navbar->AddItem('Inscription','Compte/register.php', 'right');
+
+    $navbar->AddItem('','Form/Compte/login.php','right', '', 'bi bi-person-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-right" title="Connexion');
+    $navbar->AddItem('Inscription','Form/Compte/register.php', 'right');
 }
 $navbar->render() ;
 ?>

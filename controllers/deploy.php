@@ -54,6 +54,7 @@ if (empty($changes)) {
     $output = array_merge($output, $res);
 
     // ✅ Commit
+    $res = [];
     exec("cd /d \"$projectDir\" && $gitPath commit -m \"auto deploy\" 2>&1", $res, $ret);
     $output = array_merge($output, $res);
 
@@ -64,6 +65,7 @@ if (empty($changes)) {
 }
 
 // ✅ Push (même si aucun commit, push pour sync)
+$res = [];
 exec("cd /d \"$projectDir\" && $gitPath push $remote master 2>&1", $res, $ret);
 $output = array_merge($output, $res);
 

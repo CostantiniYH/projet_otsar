@@ -33,7 +33,24 @@ $navbar->render() ;
 <div class="container mt-5 mb-5">
     <?php
         require_once __DIR__ . '/../components/alerts.php'; 
+        if (isset($_GET['deploy']) && isset($_SESSION['deploy_result'])) {
+    $result = $_SESSION['deploy_result'];
+    echo '<div style="border:1px solid #ccc;padding:10px;margin:10px 0;background:#f9f9f9">';
+    if ($result['success']) {
+        echo '<h3 style="color:green">✅ Déploiement réussi</h3>';
+    } else {
+        echo '<h3 style="color:red">❌ Erreur lors du déploiement</h3>';
+    }
+    echo '<pre>';
+    foreach ($result['log'] as $line) {
+        echo htmlspecialchars($line) . "\n";
+    }
+    echo '</pre>';
+    echo '</div>';
+    unset($_SESSION['deploy_result']); // nettoyage après affichage
+}
     ?>
+    
 
     <div class="row d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1500">
         <?php if (isAdmin()) { ?>

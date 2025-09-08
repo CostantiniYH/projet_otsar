@@ -65,7 +65,7 @@ $navbar->render() ;
 
         <?php 
         $is_local = ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['REMOTE_ADDR'] === '127..0.0.1');
-        if ($is_local || !$is_local) { ?>
+        if ($is_local) { ?>
         <div class="col-md-12 shadow mt-4 mb-4 text-center p-3 rounded border-start border-black border-2 border-end overflow-auto">
             <h3>Cliquer ici pour lancer le déploiement :</h3>
             <form method="post" action="<?= BASE_URL ?>controllers/deploy.php">

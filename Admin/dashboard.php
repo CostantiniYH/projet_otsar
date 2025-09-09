@@ -36,7 +36,7 @@ $navbar->render() ;
 
         ?>    
 
-<div class="row d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1500">
+    <div class="row d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1500">
         <?php if (isAdmin()) { ?>
                     <h1 class="fs-3 shadow p-4 rounded border-start border-black border-2 border-end">
                         Bienvenue sur votre tableau de bords <?= $_SESSION['user']['prenom'] ?> l'admin !</h1>
@@ -62,6 +62,7 @@ $navbar->render() ;
                 }
                 echo '</pre>';
                 echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                echo '</div>';
                 echo '</div>';
                 unset($_SESSION['deploy_result']); // nettoyage après affichage
             }

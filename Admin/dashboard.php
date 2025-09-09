@@ -76,8 +76,9 @@ $navbar->render() ;
                         <div class="d-flex col-md-3 mx-auto mt-3">
                             <select name="remote" class="form-select mx-auto mb-3" aria-label="Default select example">
                                 <option value="origin">origin</option>
-                                <option value="mobile">mobile</option>
                                 <option value="github">github</option>
+                                <option value="wan">wan</option>
+                                <option value="mobile">mobile</option>
                             </select>
                         </div>
                         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
@@ -87,7 +88,7 @@ $navbar->render() ;
         <?php } ?>
     
         <div class="col-md-12 shadow p-3 rounded border-start border-black border-2 border-end overflow-auto"
-        data-aos="fade-up" data-aos-duration="1500">
+        data-aos="fade-up" data-aos-duration="1000">
             <table class="table shadow ">
                 <h2>Table utilisateurs</h2>                
                 <tr>

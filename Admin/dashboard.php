@@ -49,8 +49,7 @@ $navbar->render() ;
     echo '</div>';
     unset($_SESSION['deploy_result']); // nettoyage après affichage
 }
-    ?>
-    
+    ?>    
 
     <div class="row d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1500">
         <?php if (isAdmin()) { ?>
@@ -66,7 +65,7 @@ $navbar->render() ;
         <?php 
         $is_local = ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['REMOTE_ADDR'] === '127..0.0.1');
         if ($is_local) { ?>
-        <div class="col-md-12 shadow mt-4 mb-4 text-center p-3 rounded border-start border-black border-2 border-end overflow-auto">
+        <div class="col-md-12 shadow mt-4 mb-4 text-center p-3 rounded border border-info">
             <h3>Cliquer ici pour lancer le déploiement :</h3>
             <form method="post" action="<?= BASE_URL ?>controllers/deploy.php">
                 <div class="d-flex col-md-3 mx-auto mt-3">
@@ -77,7 +76,7 @@ $navbar->render() ;
                 </select>
                 </div>
                 <input type="hidden" name="token" value="token_de_ouf_impossible_à_craquer">
-                <button type="submit" class="btn btn-primary bi bi-cloud-upload"> Déployer maintenant</button>
+                <button type="submit" class="btn btn-success bi bi-cloud-upload"> Déployer maintenant</button>
         </div>
         <?php } ?>
     

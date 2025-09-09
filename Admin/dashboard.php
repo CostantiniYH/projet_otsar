@@ -111,7 +111,7 @@ $navbar->render() ;
                         <td>
                             <div class="d-flex gap-2">
                                 <input type="hidden" name="id" value="<?= $u['id'] ?>">
-                                <button type="button" href="<?= BASE_URL ?>Compte/dashboard.php" class="
+                                <button type="button" href="<?= BASE_URL ?>compte/dashboard.php" class="
                                 btn btn-primary btn-sm bi bi-eye"></button>
                             </div>
                             <div class="d-flex gap-2">
@@ -120,8 +120,8 @@ $navbar->render() ;
                             </div>
                             <form action="<?= BASE_URL ?>controllers/Delete/user.php">
                                 <input type="hidden" name="id" value="<?= $u['id'] ?>">
-                                <button type="submit" class="btn btn-danger btn-sm bi bi-trash"
-                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');"></button>
+                                <!--<button type="submit" class="btn btn-danger btn-sm bi bi-trash"
+                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');"></button>-->
                             </form>
 
                         </td>
@@ -131,10 +131,8 @@ $navbar->render() ;
         </div>
         <div class="col-md-12 shadow mt-4 p-3 rounded border-start border-black border-2 border-end overflow-auto"
         data-aos="fade-up" data-aos-duration="1000">
-            <table class="table shadow">
-                
-                    <h2>Table Livres</h2>
-                
+            <table class="table shadow">                
+                <h2>Table Livres</h2>                
                 <tr>
                     <th>קטגוריה כללית</th>
                     <th>קטגוריה פרטית</th>
@@ -158,10 +156,8 @@ $navbar->render() ;
         </div>
         <div class="col-md-12 shadow mt-4 p-3 rounded border-start border-black border-2 border-end overflow-auto"
         data-aos="fade-up" data-aos-duration="1000">
-            <table class="table shadow">
-                
-                    <h2>Table Images</h2>
-                
+            <table class="table shadow">                
+                <h2>Table Images</h2>                
                 <tr>
                     <th>Image</th>
                     <th>Titre</th>                    
@@ -169,22 +165,21 @@ $navbar->render() ;
                     <th>Ajoutée le</th>
                     <th>Action</th>
                 </tr>
-                <!--  foreach ($images as $image) : -->
                 <?php 
                     $pdo = connect();
                     $images = getAllInnerJoin($pdo, 't_images', 't_categories', 'nom AS nom_categorie', 't_images.id_categorie = t_categories.id');
                     
                     foreach ($images as $image) : ?>
                         <tr>
-                            <td><img src="<?= /*BASE_URL . 'uploads/' .*/ $image['chemin'] ?>" alt="<?= $image['nom'] ?>" width="100"></td>
+                            <td><img src="<?= BASE_URL . $image['chemin'] ?>" alt="<?= $image['nom'] ?>" width="100"></td>
                             <td><?= $image['nom'] ?></td>                            
                             <td><?= $image['nom_categorie'] ?></td>
                             <td><?= $image['date_upload'] ?></td>
                             <td>
                                 <div class="d-flex gap-2">
                                     <input type="hidden" name="id" value="<?= $image['id'] ?>">
-                                    <button type="button" href="Crud/update_image.php" class="btn btn-warning btn-sm bi bi-pencil"></button>
-                                <form action="<?= BASE_URL ?>controllers/delete_image.php" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette image ?');">
+                                    <button type="button" href="#Form/Create-Update/update_image.php" class="btn btn-warning btn-sm bi bi-pencil"></button>
+                                <form action="<?= BASE_URL ?>controllers/Delete/image.php" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette image ?');">
                                     <input type="hidden" name="id" value="<?= $image['id'] ?>">
                                     <button type="submit" class="btn btn-danger btn-sm bi bi-trash"></button>
                                 </form>

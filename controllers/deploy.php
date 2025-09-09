@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$allowedRemote = ['origin', 'mobile', 'github'];
+$allowedRemote = ['origin', 'mobile', 'github', 'wan'];
 $remote = $_POST['remote'] ?? 'origin';
 
 if (!in_array($remote, $allowedRemote)) {

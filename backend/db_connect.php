@@ -9,15 +9,15 @@ if ($host === 'localhost' || $host === '127.0.0.1') {
     //define('BASE_URL', '/projet_otsar/');
 } else {
     //define('BASE_URL', '/');    
-    define('BASE_URL', $protocol . '://ip publique');
-    //define('BASE_URL', $protocol . '://ip privée/');
+    define('BASE_URL', $protocol . '://83.159.94.100:8080/');
+    //define('BASE_URL', $protocol . '://192.168.197.179:8080/');
 }
 
 function connect() {
     try {
         $dsn = "mysql:host=localhost;dbname=otsar";
-        $user = "root";
-        $password = "";
+        $user = "YHC";
+        $password = "Yaacov2790.";
 
         $pdo = new PDO($dsn, $user, $password, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

@@ -46,6 +46,7 @@ $navbar->render() ;
         echo htmlspecialchars($line) . "\n";
     }
     echo '</pre>';
+    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
     echo '</div>';
     unset($_SESSION['deploy_result']); // nettoyage après affichage
 }

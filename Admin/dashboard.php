@@ -32,53 +32,57 @@ $navbar->render() ;
 
 <div class="container mt-5 mb-5">
     <?php
-        require_once __DIR__ . '/../components/alerts.php'; 
-        if (isset($_GET['deploy']) && isset($_SESSION['deploy_result'])) {
-    $result = $_SESSION['deploy_result'];
-    echo '<div style="border:1px solid #ccc;padding:10px;margin:10px 0;background:#f9f9f9">';
-    if ($result['success']) {
-        echo '<h3 style="color:green">✅ Déploiement réussi</h3>';
-    } else {
-        echo '<h3 style="color:red">❌ Erreur lors du déploiement</h3>';
-    }
-    echo '<pre>';
-    foreach ($result['log'] as $line) {
-        echo htmlspecialchars($line) . "\n";
-    }
-    echo '</pre>';
-    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-    echo '</div>';
-    unset($_SESSION['deploy_result']); // nettoyage après affichage
-}
-    ?>    
+        require_once __DIR__ . '/../components/alerts.php';
 
-    <div class="row d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1500">
+        ?>    
+
+<div class="row d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1500">
         <?php if (isAdmin()) { ?>
                     <h1 class="fs-3 shadow p-4 rounded border-start border-black border-2 border-end">
                         Bienvenue sur votre tableau de bords <?= $_SESSION['user']['prenom'] ?> l'admin !</h1>
-                    <!--<a href="admin-pannel.php">Panel admin</a>-->
-            <?php } else { ?>
+                        <!--<a href="admin-pannel.php">Panel admin</a>-->
+                        <?php } else { ?>
                     <p class="col-md-12 shadow p-3 rounded border-start border-black border-2 border-end">
                         Bienvenue, <?= $_SESSION['user']['prenom'] . ' ' . $_SESSION['user']['nom'] ?> !</p>
                 
         <?php }; ?>
-
+        
         <?php 
-        $is_local = ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['REMOTE_ADDR'] === '127..0.0.1');
-        if ($is_local) { ?>
-        <div class="col-md-12 shadow mt-4 mb-4 text-center p-3 rounded border border-info">
-            <h3>Cliquer ici pour lancer le déploiement :</h3>
-            <form method="post" action="<?= BASE_URL ?>controllers/deploy.php">
-                <div class="d-flex col-md-3 mx-auto mt-3">
-                <select name="remote" class="form-select mx-auto mb-3" aria-label="Default select example">
-                    <option value="origin">origin</option>
-                    <option value="mobile">mobile</option>
-                    <option value="github">github</option>
-                </select>
+            if (isset($_GET['deploy']) && isset($_SESSION['deploy_result'])) {
+                $result = $_SESSION['deploy_result'];
+                echo '<div style="border:1px solid #ccc;padding:10px;margin:10px 0;background:#f9f9f9">';
+                $alertClass = $result['success'] ? 'alert-success' : 'alert-danger';
+                $title = $result['success'] ? '✅ Déploiement réussi' : '❌ Erreur lors du déploiement';
+
+                echo '<div class="alert ' . $alertClass . ' mt-3">';
+                echo '<h4>' . $title . '</h4>';
+                echo '<pre style="max-height:300px;overflow:auto;">';
+                foreach ($result['log'] as $line) {
+                    echo htmlspecialchars($line) . "\n";
+                }
+                echo '</pre>';
+                echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                echo '</div>';
+                unset($_SESSION['deploy_result']); // nettoyage après affichage
+            }
+
+            if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['REMOTE_ADDR'] === '127.0.0.1') { 
+                $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+                ?>
+                <div class="col-md-12 shadow mt-4 mb-4 text-center p-3 rounded border border-info">
+                    <h3>Cliquer ici pour lancer le déploiement :</h3>
+                    <form method="post" action="<?= BASE_URL ?>controllers/deploy.php">
+                        <div class="d-flex col-md-3 mx-auto mt-3">
+                            <select name="remote" class="form-select mx-auto mb-3" aria-label="Default select example">
+                                <option value="origin">origin</option>
+                                <option value="mobile">mobile</option>
+                                <option value="github">github</option>
+                            </select>
+                        </div>
+                        <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+                        <button type="submit" class="btn btn-success bi bi-cloud-upload"> Déployer maintenant</button>
+                    </form>
                 </div>
-                <input type="hidden" name="token" value="token_de_ouf_impossible_à_craquer">
-                <button type="submit" class="btn btn-success bi bi-cloud-upload"> Déployer maintenant</button>
-        </div>
         <?php } ?>
     
         <div class="col-md-12 shadow p-3 rounded border-start border-black border-2 border-end overflow-auto"

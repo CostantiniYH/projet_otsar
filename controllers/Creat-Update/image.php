@@ -25,8 +25,7 @@ if ($upload->validate()) {
             mkdir($uploadPath, 0777, true); 
         }
 
-         if (!is_dir($uploadPath) && !mkdir($uploadPath, 0775,
-         true)) {
+        if (!is_dir($uploadPath) && !mkdir($uploadPath, 0775, true)) {
             header('Location: ' . BASE_URL . 'Form/Crud/categorie.php?erreur=Impossible de créer le dossier 
             uploads principal !');
             exit();
@@ -48,7 +47,6 @@ if ($upload->validate()) {
             exit();
         }
         
-
         if (!file_exists($_FILES['image']['tmp_name'])) {
             die("Erreur : le fichier temporaire n'existe pas.");
         }

@@ -3,24 +3,45 @@ require_once __DIR__ . '/../../controllers/session.php';
 require_once __DIR__ . '/../../class/image.php';
 require_once __DIR__ . '/../../class/upload.php';
 
-    if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-        header('location: ' . BASE_URL . 'Form/Create-Update/image.php?erreur=Accès interdit !');
-        exit();
-    }
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    header('location: ' . BASE_URL . 'Form/Create-Update/image.php?erreur=Accès interdit !');
+    exit();
+}
 
-$nom = $_POST['titre'] ?? '';
-$auteur = $_POST['auteur'] ?? '';
+$nom = htmlspecialchars($_POST['titre'] ?? '');
+$auteur = htmlspecialchars($_POST['auteur'] ?? '');
+$categorie = htmlspecialchars($_POST['categorie'] ?? '');
+$s_categorie = htmlspecialchars($_POST['s_categorie'] ?? '');
+$s_s_categorie = htmlspecialchars($_POST['s_scategorie'] ?? '');
+$s_s_s_categorie = htmlspecialchars($_POST['s_s_s_categorie'] ?? '');
+
 
 $upload = new Upload($_FILES['image']);
+
 if ($upload->validate()) {
-    $uploadDir = '/uploads/';
+    $uploadDir = 'uploads/';
+    $uploadPath = __DIR__ . '/../../uploads/';
+
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0777, true); // Crée le dossier avec les bonnes permissions
     }
-    //if (!file_exists($_FILES['image']['tmp_name'])) {
-      //  die("Erreur : le fichier temporaire n'existe pas.");
-    //}
+
+     if (!is_dir($uploadPath) && !mkdir($uploadPath, 0775, true)) {
+        header('Location: ' . BASE_URL . 'Form/Crud/categorie.php?erreur=Impossible de créer le dossier 
+        uploads principal !');
+        exit();
+    }
+
+    if (!is_writable($uploadPath)) {
+        die("Erreur : le dossier uploads n'est pas inscriptible par PHP !");
+    }
+
+    if (!file_exists($_FILES['image']['tmp_name'])) {
+        die("Erreur : le fichier temporaire n'existe pas.");
+    }
+
     $destination = $uploadDir . basename($_FILES['image']["name"]);
+
     if ($upload->moveTo($destination)) {
         echo "Fichier uploadé avec succès ! <br>";
         echo "Chemin du fichier : " . $upload->getFilePath();

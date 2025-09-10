@@ -88,10 +88,10 @@ $navbar->render() ;
     
         <div class="col-md-12 shadow p-3 rounded border-start border-black border-2 border-end overflow-auto"
         data-aos="fade-up" data-aos-duration="1000">
-            <table class="table shadow ">
+            <table class="table ">
                 <h2>Table utilisateurs</h2>                
                 <tr>
-                    <th  class="table-header">ID User</th>
+                    <th  class="table-header">ID</th>
                     <th  class="table-header">nom</th>
                     <th  class="table-header">Prénom</th>
                     <th  class="table-header">Adresse Email</th>
@@ -130,32 +130,47 @@ $navbar->render() ;
         </div>
         <div class="col-md-12 shadow mt-4 p-3 rounded border-start border-black border-2 border-end overflow-auto"
         data-aos="fade-up" data-aos-duration="1000">
-            <table class="table shadow">                
+            <table class="table">                
                 <h2>Table Livres</h2>                
-                <tr>
-                    <th>קטגוריה כללית</th>
-                    <th>קטגוריה פרטית</th>
-                    <th>קטגוריה קטנה</th>
-                    <th>ספר</th>
-                </tr>
-                <tr>
-                    <?php 
+                <?php 
                     $pdo = connect();
                     $massekets = getLivre($pdo);
-                    
-                    foreach ($massekets as $masseket) : ?>
-                        <tr>
-                            <td><?= $masseket['nom_categorie'] ?></td>
-                            <td><?= $masseket['nom_s_categorie'] ?></td>
-                            <td><?= $masseket['nom_s_s_categorie'] ?></td>
-                            <td><?= $masseket['titre'] ?></td>
-                        </tr>
+                ?>                
+                <tr>
+                    <th>שם ספר</th>
+                    <?php foreach ($massekets as $masseket) : ?>
+                        <td><?= $masseket['titre'] ?></td>
+                    <?php endforeach; ?>                
+                </tr>
+                <tr>
+                    <th>קטגוריה קטנה</th>
+                    <?php foreach ($massekets as $masseket) : ?>
+                    <td><?= $masseket['nom_s_s_categorie'] ?></td>
                     <?php endforeach; ?>
+                </tr>
+                <tr>
+                    <th>קטגוריה פרטית</th>
+                    <?php foreach ($massekets as $masseket) : ?>
+                        <td><?= $masseket['nom_s_categorie'] ?></td>
+                    <?php endforeach; ?>
+                </tr>
+                <tr>
+                    <th>קטגוריה כללית</th>
+                    <?php foreach ($massekets as $masseket) : ?>
+                        <td><?= $masseket['nom_categorie'] ?></td>
+                    <?php endforeach; ?>
+                </tr>
+                <tr>
+                    <th>תמונה</th>
+                    <?php foreach ($massekets as $masseket) : ?>
+                        <td><img width="" src="<?= $masseket['image'] ?>" alt="<?= $masseket['titre']?>"></td>
+                    <?php endforeach; ?>
+                </tr>
             </table>
         </div>
         <div class="col-md-12 shadow mt-4 p-3 rounded border-start border-black border-2 border-end overflow-auto"
         data-aos="fade-up" data-aos-duration="1000">
-            <table class="table shadow">                
+            <table class="table">                
                 <h2>Table Images</h2>                
                 <tr>
                     <th>Image</th>

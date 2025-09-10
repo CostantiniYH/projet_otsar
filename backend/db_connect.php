@@ -9,15 +9,15 @@ if ($host === 'localhost' || $host === '127.0.0.1') {
     //define('BASE_URL', '/projet_otsar/');
 } else {
     //define('BASE_URL', '/');    
-    define('BASE_URL', $protocol . '://83.159.94.100:8080/');
-    //define('BASE_URL', $protocol . '://192.168.197.179:8080/');
+    define('BASE_URL', $protocol . '://ipPublique:port **/');
+    //define('BASE_URL', $protocol . '://ipPrivée:port**/');
 }
 
 function connect() {
     try {
         $dsn = "mysql:host=localhost;dbname=otsar";
-        $user = "YHC";
-        $password = "Yaacov2790.";
+        $user = "root";
+        $password = "";
 
         $pdo = new PDO($dsn, $user, $password, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -29,7 +29,7 @@ function connect() {
         die("Erreur de connexion à la base de données : " . $e->getMessage());
     }
 }
-function getAll($pdo, $table) {
+function getAll ($pdo, $table) {
     try {
         $sql = "SELECT * FROM $table";
         $stmt = $pdo->prepare($sql);
@@ -39,7 +39,7 @@ function getAll($pdo, $table) {
         echo "Erreur : " . $e->getMessage();
     }
 }
- function getAllInnerJoin($pdo, $table, $joinTable, $joinElement, $joinCondition) {
+ function getAllInnerJoin ($pdo, $table, $joinTable, $joinElement, $joinCondition) {
     try {
         $sql = "SELECT $table.*, $joinTable.$joinElement FROM $table INNER JOIN $joinTable ON $joinCondition";
         $stmt = $pdo->prepare($sql);
@@ -50,7 +50,7 @@ function getAll($pdo, $table) {
     }
 }
 
-function findBy($pdo, $table, $field, $value) {
+function findBy ($pdo, $table, $field, $value) {
     try {
         $sql = "SELECT * FROM $table WHERE $field = ?";
         $stmt = $pdo->prepare($sql);
@@ -60,7 +60,7 @@ function findBy($pdo, $table, $field, $value) {
         echo "Erreur : " . $e->getMessage();
     }
 }
-function findBy2($pdo, $table, $champ, $id) {
+function findBy2 ($pdo, $table, $champ, $id) {
     try {
         $sql = "SELECT $table.*, c.nom AS nom_categorie FROM $table
         INNER JOIN t_categories c ON $table.id_categorie = c.id WHERE $table.$champ = ?"; // Sélectionner toutes les colonnes
@@ -75,7 +75,7 @@ function findBy2($pdo, $table, $champ, $id) {
     }
 }
 
-function findBy2conditions($pdo, $table, $champ1, $id1, $champ2, $id2) {
+function findBy2conditions ($pdo, $table, $champ1, $id1, $champ2, $id2) {
     try {
         $sql = "SELECT * FROM $table WHERE $champ1 = ? AND $champ2 = ?";
         $stmt = $pdo->prepare($sql);
@@ -85,7 +85,7 @@ function findBy2conditions($pdo, $table, $champ1, $id1, $champ2, $id2) {
         echo "Erreur : " . $e->getMessage();
     }
 }
-function insert($pdo, $table, $data) {
+function insert ($pdo, $table, $data) {
     try {
         $column = implode(',', array_keys($data));
         $value = implode(',', array_fill(0, count($data), '?'));

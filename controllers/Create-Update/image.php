@@ -9,13 +9,14 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 }
 
 $titre = htmlspecialchars($_POST['titre']);
-$categories = htmlspecialchars($_POST['categorie']);
+$categorie = htmlspecialchars($_POST['categorie']);
 
 $upload = new Upload($_FILES['image']);
 
 $pdo = connect();
-$N_C = findBy2($pdo, 'nom','t_categories', 'id', $categorie);
-$nom_categorie = $N_C['nom'];
+
+$N_C = findBy($pdo, 't_categories', 'id', $categorie);
+$nom_categorie = $N_C[0]['nom'];
 
 if ($upload->validate()) {
         $uploadDir = 'uploads/';
@@ -66,36 +67,29 @@ if ($upload->validate()) {
     } else {
         echo "Erreur de validation : " . implode(', ', $upload->getError());
         exit();
-    } 
-
-
-var_dump(
-    $destination,
-    $categories,
-    $titre
-);
-
-$pdo = connect();
-
-$existingImage = findBy($pdo, 't_images',  'chemin', $destination);
-    if ($existingImage) {
-        header('location: ' . BASE_URL . 'Form/Create-Update/image.php?message=L\'image a déjà été ajoutée !');
-        exit();
     }
+    
+$imageUrl = $uploadDir . $categorieClean . '/' . $fileName;
 
-$categoryExists = findBy($pdo, 't_categories', 'id', $categories);
-    if (!$categoryExists) {
-        header('location: ' . BASE_URL . 'Form/Create-Update/image.php?message=La catégorie sélectionnée n\'existe pas.');
-        exit();
-    }
+$existingImage = findBy($pdo, 't_images',  'chemin', $imageUrl);
+
+if ($existingImage) {
+    header('location: ' . BASE_URL . 'Form/Create-Update/image.php?message=L\'image a déjà été ajoutée !');
+    exit();
+}
+
+$categoryExists = findBy($pdo, 't_categories', 'id', $categorie);
+
+if (!$categoryExists) {
+    header('location: ' . BASE_URL . 'Form/Create-Update/image.php?message=La catégorie sélectionnée n\'existe pas.');
+    exit();
+}
 
 $data = [
-    'chemin' => $destination,
     'nom' => $titre,
-    'id_categorie' => $categories
+    'chemin' => $imageUrl,
+    'id_categorie' => $categorie
 ];
-
-var_dump($data) ; 
 
 if (insert($pdo,'t_images',$data)) { 
     header('location: ' . BASE_URL . 'Form/Create-Update/image.php?success=Image ajoutée avec succès !');

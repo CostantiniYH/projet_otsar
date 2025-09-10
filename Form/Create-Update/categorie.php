@@ -41,7 +41,7 @@ $navbar->render() ;
     <div class="row mt-4 mb-4 gap-4">
         <h3 class="text-center mb-4 p-3 rounded-4 shadow border border-bottom-0 border-3 
         border-warning">Ajouter une catégorie, une sous-catégorie ou une sous-sous-catégorie</h3>
-        <form action="<?= BASE_URL ?>controllers/add_categorie.php" method="post" class="col-md-5 shadow 
+        <form action="<?= BASE_URL ?>controllers/Create-Update/categorie.php" method="post" class="col-md-5 shadow 
         p-4 rounded-4" enctype="multipart/form-data">
             <h4 class="text-center">Catégorie</h4>
             <div class="form-group">
@@ -65,7 +65,7 @@ $navbar->render() ;
                 <?php } ?>
             </div>
         </div>
-        <form action="<?= BASE_URL ?>controllers/add_categorie.php" method="post" class="col-md-5 
+        <form action="<?= BASE_URL ?>controllers/Create-Update/categorie.php" method="post" class="col-md-5 
         shadow p-4 rounded-4" enctype="multipart/form-data">
             <h4 class="text-center">Sous-catégorie</h4>
             <div class="form-group">
@@ -89,7 +89,7 @@ $navbar->render() ;
                 <?php } ?>
             </div>
         </div>
-        <form action="<?= BASE_URL ?>controllers/add_categorie.php" method="post" class="col-md-5 
+        <form action="<?= BASE_URL ?>controllers/Create-Update/categorie.php" method="post" class="col-md-5 
         shadow p-4 rounded-4" enctype="multipart/form-data">
             <h4 class="text-center">Sous-sous-catégorie</h4>
             <div class="form-group">

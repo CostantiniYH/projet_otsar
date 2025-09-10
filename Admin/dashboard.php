@@ -163,7 +163,7 @@ $navbar->render() ;
                 <tr>
                     <th>תמונה</th>
                     <?php foreach ($massekets as $masseket) : ?>
-                        <td><img width="" src="<?= $masseket['image'] ?>" alt="<?= $masseket['titre']?>"></td>
+                        <td><img width="80" height="90" src="<?= BASE_URL . $masseket['image'] ?>" alt="<?= $masseket['titre']?>"></td>
                     <?php endforeach; ?>
                 </tr>
             </table>

@@ -7,7 +7,7 @@ require_once __DIR__ . '/../../class/navbar.php';
 $navbar = new Navbar();
 $navbar->AddItem(' אוצר','index.php', 'left', '', 'bi bi-book-half rounded-5 text-white" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip-left" title="אוצר הספרים');
 $navbar->AddItem('','index.php','center', true, 'bi bi-house-fill" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="super-tooltip" title="Accueil');
-$navbar->AddItem('Inscription','Compte/register.php', 'right');
+$navbar->AddItem('Inscription','Form/Compte/register.php', 'right');
 $navbar->Render();
 ?>
 <div class="container mt-5 mb-5">
